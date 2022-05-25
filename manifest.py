@@ -10,7 +10,7 @@
     'version' : '0.1',
     'depends' : [],
     'data':[
-       'views/product_template.xml',
+       'views/product_view_inherit.xml',
     ],
     'demo' : [
         
