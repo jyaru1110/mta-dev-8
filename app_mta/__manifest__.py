@@ -8,7 +8,7 @@
     'author' : 'odoo',
     'category' : 'Training',
     'version' : '0.1',
-    'depends' : ['sale','purchase','stock'],
+    'depends' : ['sale'],
     'data':[
        'views/mta_app_view.xml',
        'views/product_view.xml',
