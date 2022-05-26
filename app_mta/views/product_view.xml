@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="product_view_list">
+            <field name="name">product.template.list</field>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <tree string="Product List">
+                    <field name="name"/>
+                    <field name="qty_ordered"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
