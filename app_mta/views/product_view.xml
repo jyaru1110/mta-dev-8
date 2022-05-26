@@ -5,7 +5,7 @@
             <field name="name">product.template.list</field>
             <field name="model">product.template</field>
             <field name="arch" type="xml">
-                <tree string="Product List">
+                <tree string="Product List" colors="red:buffer_size == '10';yellow:buffer_size == '20';green:buffer_size == '30'">
                     <field name="name"/>
                     <field name="default_code"/>
                     <field name="buffer_size"/>
