@@ -10,7 +10,8 @@
     'version' : '0.1',
     'depends' : ['sale','purchase','stock'],
     'data':[
-       'views/product_view_inherit.xml',
+       'views/mta_app_view.xml',
+       'views/product_view.xml',
     ],
     'demo' : [
         
