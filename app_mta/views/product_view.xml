@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <tree string="Product List">
                     <field name="name"/>
-                    <field name="qty_ordered"/>
+                    <field name="qty_available"/>
                 </tree>
             </field>
         </record>
