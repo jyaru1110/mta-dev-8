@@ -1,4 +1,5 @@
 # -*- coding utf-8 -*- 
+from email.policy import default
 from odoo import models, fields, api
 
 class ProductTemplate(models.Model):
@@ -7,7 +8,7 @@ class ProductTemplate(models.Model):
     # Add a new column to the product.template model
     qty_ordered = fields.Integer(string='# Ordered')
     qty_transit = fields.Integer(string='# Transit')
-    buffer_size = fields.Integer(string="Buffer Size")
+    buffer_size = fields.Integer(string="Buffer Size",default=10)
     oc = fields.Integer(string="Orden de compra")
     bp_solicitud = fields.Integer(string="Buffer Penetration Solicitadas",
                                 compute='_compute_bp_solicitud')
