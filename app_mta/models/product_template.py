@@ -2,7 +2,6 @@
 from odoo import models, fields, api
 
 class ProductTemplate(models.Model):
-    _name = 'product.inventory'
     _inherit = 'product.template'
     
     # Add a new column to the product.template model
