@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="id" name="your name" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="./css/style.css" type="text/css"/> 
+        </xpath>
+    </template>
     <data>
         <record model="ir.ui.view" id="product_template_tree_view_inherit">
             <field name="name">product.template.product.tree.inherit</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_tree_view"/>
-            <template id="id" name="your name" inherit_id="website.assets_frontend">
-                <xpath expr="." position="inside">
-                    <link rel="stylesheet" href="./css/style.css" type="text/css"/> 
-                </xpath>
-            </template>
+            
             <field name="arch" type="xml">
                 <field name="default_code" position="after">
                       
