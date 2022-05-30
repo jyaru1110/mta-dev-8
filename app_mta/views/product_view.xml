@@ -12,7 +12,6 @@
                     <field name="bp_solicitud"/>
                     <field name="qty_transit"/>
                     <field name="bp_transito"/>
-                    <field name="qty_available"/>
                     <field name="bp_disponible"/>
                 </field>
             </field>
