@@ -1,8 +1,9 @@
 # -*- coding utf-8 -*- 
 from odoo import models, fields, api
 
-class ProductTemplate(models.Model):
-    _inherit = 'product.template'
+class ProductInventory(models.Model):
+    _name = 'product.inventory'
+    _inherits = {'product.template': 'product_id'}
     
     # Add a new column to the product.template model
     qty_ordered = fields.Integer(string='# Ordered')
