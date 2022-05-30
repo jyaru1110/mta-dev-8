@@ -13,8 +13,7 @@
             
             <field name="arch" type="xml">
                 <field name="default_code" position="after">
-                      
-                    <field name="buffer_size" class="red"/>
+                    <field name="buffer_size" decoration-danger="buffer_size=='10'"/>
                     <field name="oc"/>
                     <field name="bp_solicitud"/>
                     <field name="qty_transit"/>
