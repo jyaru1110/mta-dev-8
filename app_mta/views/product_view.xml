@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record model="ir.ui.view" id="product_view_list">
-            <field name="name">product.inventory.list</field>
-            <field name="model">product.inventory</field>
+        <record model="ir.ui.view" id="	product.product_template_tree_inherit_view">
+            <field name="name">product.template.product.tree</field>
+            <field name="model">product.template</field>
             <field name="arch" type="xml">
                 <tree string="Product List">
                     <field name="name"/>
