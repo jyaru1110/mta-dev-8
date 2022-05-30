@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record model="ir.ui.view" id="	product.product_template_tree_inherit_view">
-            <field name="name">product.template.product.tree</field>
+        <record model="ir.ui.view" id="	product.product_template_tree_view">
+            <field name="name">product.template.product.tree.inherit</field>
             <field name="model">product.template</field>
             <field name="arch" type="xml">
-                <tree string="Product List">
+                <field name="default_code">
                     <field name="name"/>
                     <field name="default_code"/>
                     <field name="buffer_size"/>
@@ -15,7 +15,7 @@
                     <field name="bp_transito"/>
                     <field name="qty_available"/>
                     <field name="bp_disponible"/>
-                </tree>
+                </field>
             </field>
         </record>
     </data>
