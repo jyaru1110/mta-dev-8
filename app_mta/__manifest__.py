@@ -13,6 +13,7 @@
        'views/mta_app_view.xml',
        'views/product_view.xml',
     ],
+    'css': ['css/styles.css'],
     'demo' : [
         
     ],
