@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="product.product_template_tree_view"/>
             <field name="arch" type="xml">
                 <field name="default_code" position="after">
-                    <link rel="stylesheet" href="./css/styles.css"/>   
+                    <link rel="stylesheet" href="./css/style.css"/>   
                     <field name="buffer_size" class="red"/>
                     <field name="oc"/>
                     <field name="bp_solicitud"/>
