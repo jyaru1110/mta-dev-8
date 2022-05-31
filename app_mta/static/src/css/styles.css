@@ -1,0 +1,13 @@
+.condition .text-warning{
+    background-color: #d8203b !important;
+    color: rgb(31, 31, 31) !important; 
+}
+.condition .text-info{
+    background-color: #f8e251 !important;
+    color: rgb(31, 31, 31) !important; 
+}
+
+.condition .text-muted{
+    background-color: #5cb85c !important;
+    color: rgb(31, 31, 31) !important; 
+}
