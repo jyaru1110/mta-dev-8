@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="assets_frontend" name="Technical Service Assets" inherit_id="web.assets_frontend">
-        <xpath expr="//link[last()]" position="after">             
-            <link rel="stylesheet" href="technical_service/static/src/css/styles.css"/>        
-        </xpath>    
-    </template>
     <data>
         <record model="ir.ui.view" id="product_mta_list">
             <field name="name">product.mta.list</field>
             <field name="model">product.mta</field>
             <field name="arch" type="xml">
                 <tree string="Product list">
+                    <field name="buffer_size" class="condition" decoration-info="buffer_size==0" decoration-muted="buffer_size==30" decoration-danger="buffer_size<20"/>
                     <field name="oc"/>
                     <field name="bp_solicitud"/>
                     <field name="qty_transit"/>
