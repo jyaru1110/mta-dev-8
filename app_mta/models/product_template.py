@@ -2,10 +2,7 @@
 from odoo import models, fields, api
 
 class ProductTemplate(models.Model):
-    _inherits = {'product.template': 'product_tmpl_id'}
-    _name = 'product.template'
-    product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
-
+    _inherit = 'product.template'
     
     # Add a new column to the product.template model
     qty_ordered = fields.Integer(string='# Ordered')
