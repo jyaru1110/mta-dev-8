@@ -4,13 +4,18 @@
         <record model="ir.ui.view" id="product_template_tree_view_inherit">
             <field name="name">product.template.product.tree.inherit</field>
             <field name="model">product.template</field>
-                <tree string="New list">
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            
+            <field name="arch" type="xml">
+                <field name="default_code" position="after">
                     <field name="buffer_size" decoration-danger="buffer_size==10"/>
                     <field name="oc"/>
                     <field name="bp_solicitud"/>
                     <field name="qty_transit"/>
                     <field name="bp_transito"/>
-                </tree>
+                    <field name="bp_disponible"/>
+                </field>
+            </field>
         </record>
         <record model="ir.ui.view" id="product_template_only_form_view_inherit_academy">
             <field name="name">product.template.product.form.inherit.academy</field>
