@@ -10,7 +10,6 @@
                     <field name="bp_solicitud"/>
                     <field name="qty_transit"/>
                     <field name="bp_transito"/>
-                    <field name="bp_disponible"/>
                 </tree>
         </record>
         <record model="ir.ui.view" id="product_template_only_form_view_inherit_academy">
