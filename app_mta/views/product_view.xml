@@ -8,7 +8,7 @@
             
             <field name="arch" type="xml">
                 <field name="default_code" position="after">
-                    <field name="buffer_size" decoration-danger="buffer_size=='10'"/>
+                    <field name="buffer_size" decoration-danger="buffer_size==10"/>
                     <field name="oc"/>
                     <field name="bp_solicitud"/>
                     <field name="qty_transit"/>
@@ -23,7 +23,7 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
-                    <page string="Grapg"></page>
+                    <page string="Graph"></page>
                 </xpath>
             </field>
         </record>
