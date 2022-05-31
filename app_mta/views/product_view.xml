@@ -23,9 +23,7 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
-                    <page string="graph">
-                        <field name="graph" widget="graph" nolabel="1"/>
-                    </page>
+                    <page string="Grapg"></page>
                 </xpath>
             </field>
         </record>
