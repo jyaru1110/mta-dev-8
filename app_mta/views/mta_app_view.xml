@@ -4,7 +4,7 @@
         <record model="ir.actions.act_window" id="product_list_action">
             <field name="name">Product</field>
             <field name="res_model">product.mta</field>
-            <field name="view_mode">tree,form,graph</field>
+            <field name="view_mode">tree</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Manage inventory
