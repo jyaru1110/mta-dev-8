@@ -6,7 +6,7 @@
             <field name="model">product.mta</field>
             <field name="arch" type="xml">
                 <tree string="Product list">
-                    <field name="buffer_size" class="condition" decoration-info="buffer_size==0" decoration-muted="buffer_size==30" decoration-danger="buffer_size<20"/>
+                    <field name="buffer_size" class="condition" decoration-info="buffer_size==0" decoration-muted="buffer_size==30"/>
                     <field name="oc"/>
                     <field name="bp_solicitud"/>
                     <field name="qty_transit"/>
