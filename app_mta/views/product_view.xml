@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record model="ir.ui.view" id="product_mta_list">
-            <field name="name">product.mta.list</field>
-            <field name="model">product.mta</field>
+        <record model="ir.ui.view" id="producto_mta_list">
+            <field name="name">producto.mta.list</field>
+            <field name="model">producto.mta</field>
             <field name="arch" type="xml">
                 <tree string="Product list">
-                    <field name="buffer_size" class="condition" decoration-info="buffer_size==0" decoration-muted="buffer_size==30"/>
+                    <field name="buffer_size" class="condition" decoration-info="buffer_size==0" decoration-muted="buffer_size==0"/>
                     <field name="oc"/>
                     <field name="bp_solicitud"/>
                     <field name="qty_transit"/>

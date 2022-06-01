@@ -1,9 +1,9 @@
 # -*- coding utf-8 -*- 
 from odoo import models, fields, api
 
-class ProductMTA(models.Model):
+class ProductoMTA(models.Model):
     #_inherits = {'product.template': 'product_tmpl_id'}
-    _name = 'product.mta'
+    _name = 'producto.mta'
     _description = 'Product MTA'
     #product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
     
@@ -12,9 +12,9 @@ class ProductMTA(models.Model):
     qty_transit = fields.Integer(string='# Transit')
     buffer_size = fields.Integer(string="Buffer Size",default=10)
     oc = fields.Integer(string="Orden de compra")
-    bp_solicitud = fields.Integer(string="Buffer Penetration Solicitadas",)
+    bp_solicitud = fields.Integer(string="Solicitadas BP",)
                                 #compute='_compute_bp_solicitud')
-    bp_transito = fields.Integer(string="Buffer Penetration en Transito")
+    bp_transito = fields.Integer(string="Transito BP")
                                # , compute='_compute_bp_transito')
     bp_disponible = fields.Integer(string="Buffer Penetration Disponible",)
                                #compute='_compute_bp_disponible')
