@@ -19,6 +19,7 @@
         <menuitem id="menu_products" name="Products" parent="menu_product_sub" sequence="3"
                   action="product_mta_list_action"/>
         <menuitem id="menu_javascript" name="Javascript" parent="menu_mta_app" sequence="4"/>
-        <menuitem id="boton_javascript" name="Print data" parent="menu_javascript" sequence="5" class="boton_js"/>
+        <menuitem id="boton_javascript" name="Print data" parent="menu_javascript" sequence="5" class="boton_js"
+            action="product_mta_list_action"/>
     </data>
 </odoo>
