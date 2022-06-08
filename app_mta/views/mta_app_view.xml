@@ -19,4 +19,4 @@
         <menuitem id="menu_products" name="Products" parent="menu_product_sub" sequence="3"
                   action="product_mta_list_action"/>
     </data>
-</odoo>
+</odoo>  
