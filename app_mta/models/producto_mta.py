@@ -2,10 +2,10 @@
 from odoo import models, fields, api
 
 class ProductoMTA(models.Model):
-    _inherits = {'product.template': 'product_tmpl_id'}
-    _name = 'producto.mta'
-    _description = 'Product MTA'
-    product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
+    #_inherits = {'product.template': 'product_tmpl_id'}
+    _name = 'mta.producto'
+    #_description = 'Product MTA'
+    #product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
     
     #lt = fields.integer(string='Tiempor de respuesta del proveedor') us
     #loteOptimo = fields.integer(string='Lote óptimo') us 

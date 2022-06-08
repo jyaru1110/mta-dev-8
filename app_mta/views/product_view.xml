@@ -3,7 +3,7 @@
     <data>
         <record model="ir.ui.view" id="producto_mta_list">
             <field name="name">producto.mta.list</field>
-            <field name="model">producto.mta</field>
+            <field name="model">mta.producto</field>
             <field name="arch" type="xml">
                 <tree string="Product list">
                     <field name="buffer_size" class="condition" decoration-info="buffer_size==0" decoration-muted="buffer_size==0"/>
