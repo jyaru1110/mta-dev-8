@@ -7,6 +7,8 @@ class ProductoMTA(models.Model):
     _description = 'Product MTA'
     product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
     
+    #lt = fields.integer(string='Tiempor de respuesta del proveedor') us
+    #loteOptimo = fields.integer(string='Lote óptimo') us 
     # Add a new column to the product.template model
     qty_ordered = fields.Integer(string='# Ordered')
     qty_transit = fields.Integer(string='# Transit')
