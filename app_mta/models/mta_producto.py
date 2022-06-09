@@ -1,7 +1,7 @@
 # -*- coding utf-8 -*- 
 from odoo import models, fields, api
 
-class ProductoMTA(models.Model):
+class MtaProducto(models.Model):
     #_inherits = {'product.template': 'product_tmpl_id'}
     _name = 'mta.producto'
     #_description = 'Product MTA'
