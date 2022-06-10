@@ -5,6 +5,10 @@ class MtaProducto(models.Model):
     #_inherits = {'product.template': 'product_tmpl_id'}
     _name = 'mta.producto'
     _description = 'Product MTA'
+
+    bp_d_ind = fields.Char(string='BP D. Ind.')
+    bp_t_ind = fields.Char(string='BP D. Ind. Desc.')
+    bp_s_ind = fields.Char(string='BP D. Ind. Cod.')
     #product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
     
     #lt = fields.integer(string='Tiempor de respuesta del proveedor') us

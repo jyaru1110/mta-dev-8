@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <record model="ir.actions.act_window" id="product_mta_list_action">
-            <field name="name">Product</field>
+            <field name="name">Producto</field>
             <field name="res_model">mta.producto</field>
             <field name="view_mode">tree</field>
             <field name="help" type="html">
