@@ -10,8 +10,8 @@
     'version' : '0.1',
     'depends' : ['sale'],
     'data':[
-       'security/ir.model.access.csv',
        'security/mta_security.xml',  
+       'security/ir.model.access.csv',
        'views/mta_app_view.xml',
        'views/product_view.xml',
     ],

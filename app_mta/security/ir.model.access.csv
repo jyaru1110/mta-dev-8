@@ -1,2 +1,2 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-mta_admin,mta admin,model_mta_product,group_mta_admin,1,1,1,1
+mta_admin,mta admin,model_mta_producto,group_mta_admin,1,1,1,1
