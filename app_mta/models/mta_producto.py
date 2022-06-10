@@ -14,7 +14,7 @@ class MtaProducto(models.Model):
     lt = fields.Integer(string='Tiempor de respuesta del proveedor')
     loteOptimo = fields.Integer(string='Lote óptimo')
      #Add a new column to the product.template model
-    qty_sitio = fields.Integer(string='Cantidad en sitio')
+    qty_sitio = fields.Integer(string='# sitio')
     qty_ordered = fields.Integer(string='# Ordered')
     qty_transit = fields.Integer(string='# Transit')
     buffer_size = fields.Integer(string="Buffer Size",default=10)
