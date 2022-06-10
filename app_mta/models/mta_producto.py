@@ -23,7 +23,7 @@ class MtaProducto(models.Model):
                                 #compute='_compute_bp_solicitud')
     bp_transito = fields.Integer(string="Transito BP")
                                # , compute='_compute_bp_transito')
-    bp_disponible = fields.Integer(string="Buffer Penetration Disponible",)
+    bp_disponible = fields.Integer(string="En sitio BP",)
                                #compute='_compute_bp_disponible')
     alerta = fields.Selection(string="Alerta",selection=[('dv','DV'),('dr','DR'),('na','N/A')])
     #@api.depends('qty_available','buffer_size','qty_transit')
