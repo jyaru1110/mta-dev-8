@@ -24,7 +24,7 @@ class MtaProducto(models.Model):
                                # , compute='_compute_bp_transito')
     bp_disponible = fields.Integer(string="Buffer Penetration Disponible",)
                                #compute='_compute_bp_disponible')
-
+    alerta = fields.Selection(string="Alerta",selection=[('dv','DV'),('dr','DR'),('na','N/A')])
     #@api.depends('qty_available','buffer_size','qty_transit')
     #def _compute_bp_transito(self):
     #   for record in self:

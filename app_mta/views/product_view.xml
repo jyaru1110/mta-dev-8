@@ -6,13 +6,16 @@
             <field name="model">mta.producto</field>
             <field name="arch" type="xml">
                 <tree string="Product list">
-                    <field name="buffer_size"/>
                     <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="buffer_size"/>
                     <field name="oc"/>
-                    <field name="bp_solicitud" class="condition" decoration-info="bp_solicitud=='amarillo'" decoration-muted="bp_solicitud=='rojo'"/>
+                    <field name="bp_solicitud" class="condition" decoration-info="bp_d_ind=='amarillo'" decoration-muted="bp_d_ind=='rojo'"/>
                     <field name="qty_transit" />
                     <field name="bp_transito" class="condition" decoration-info="bp_transito=='amarillo'" decoration-muted="bp_transito=='rojo'"/>
-                    <field name="bp_disponible"/>
+                    <field name="qty_available" />
+                    <field name="bp_disponible" />
+                    <field name="alerta"/>
                 </tree>
             </field>
         </record>
