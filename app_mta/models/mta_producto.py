@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class MtaProducto(models.Model):
     #_inherits = {'product.template': 'product_tmpl_id'}
     _name = 'mta.producto'
-    #_description = 'Product MTA'
+    _description = 'Product MTA'
     #product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
     
     #lt = fields.integer(string='Tiempor de respuesta del proveedor') us

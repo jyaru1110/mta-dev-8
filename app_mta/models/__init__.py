@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from . import producto_mta
+from . import mta_producto
