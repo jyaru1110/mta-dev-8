@@ -2,17 +2,17 @@
 from odoo import models, fields, api
 
 class MtaProducto(models.Model):
-    #_inherits = {'product.template': 'product_tmpl_id'}
+    _inherits = {'product.template': 'product_tmpl_id'}
     _name = 'mta.producto'
     _description = 'Product MTA'
 
     bp_d_ind = fields.Char(string='BP D. Ind.')
     bp_t_ind = fields.Char(string='BP D. Ind. Desc.')
     bp_s_ind = fields.Char(string='BP D. Ind. Cod.')
-    #product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
+    product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
     
-    #lt = fields.integer(string='Tiempor de respuesta del proveedor') us
-    #loteOptimo = fields.integer(string='Lote óptimo') us 
+    lt = fields.integer(string='Tiempor de respuesta del proveedor')
+    loteOptimo = fields.integer(string='Lote óptimo')
     # Add a new column to the product.template model
     qty_ordered = fields.Integer(string='# Ordered')
     qty_transit = fields.Integer(string='# Transit')
