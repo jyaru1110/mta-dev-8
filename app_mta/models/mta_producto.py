@@ -11,9 +11,9 @@ class MtaProducto(models.Model):
     bp_s_ind = fields.Char(string='BP D. Ind. Cod.')
     product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
     
-    lt = fields.integer(string='Tiempor de respuesta del proveedor')
-    loteOptimo = fields.integer(string='Lote óptimo')
-    # Add a new column to the product.template model
+    lt = fields.Integer(string='Tiempor de respuesta del proveedor')
+    loteOptimo = fields.Integer(string='Lote óptimo')
+     #Add a new column to the product.template model
     qty_ordered = fields.Integer(string='# Ordered')
     qty_transit = fields.Integer(string='# Transit')
     buffer_size = fields.Integer(string="Buffer Size",default=10)
