@@ -16,22 +16,22 @@ class MtaProducto(models.Model):
      #Add a new column to the product.template model
     qty_sitio = fields.Integer(string='# sitio')
     qty_transit = fields.Integer(string='# transito')
-    buffer_size = fields.Integer(string="Buffer Size",default=10)
+    buffer_size = fields.Integer(string="Buffer Size",default=1)
     oc = fields.Integer(string="# OC")
-    bp_solicitud = fields.Integer(string="%BP en solicitadas",)
-                                #compute='_compute_bp_solicitud')
-    bp_transito = fields.Integer(string="%BP en transito",)
-                               # , compute='_compute_bp_transito')
-    bp_sitio = fields.Integer(string="%BP en sitio",)
-                               #compute='_compute_bp_disponible')
+    bp_solicitud = fields.Integer(string="%BP en solicitadas",
+                                compute='_compute_bp_solicitud')
+    bp_transito = fields.Integer(string="%BP en transito"
+                               , compute='_compute_bp_transito')
+    bp_sitio = fields.Integer(string="%BP en sitio",
+                               compute='_compute_bp_disponible')
     alerta = fields.Selection(string="Alerta",selection=[('dv','DV'),('dr','DR'),('na','N/A')])
-    #@api.depends('qty_available','buffer_size','qty_transit')
-    #def _compute_bp_transito(self):
-    #   for record in self:
-    #        record.bp_transito = (1-((record.buffer_size-record.qty_available-record.qty_transit)/(record.buffer_size)))*100
-    #def _compute_bp_solicitud(self):
-    #    for record in self:
-    #        record.bp_solicitud = (1-((record.buffer_size-record.qty_ordered-record.qty_available-record.qty_transit)/(record.buffer_size)))*100
-    #def _compute_bp_disponible(self):
-   #     for record in self:
-    #        record.bp_disponible = (1-((record.buffer_size-record.qty_available)/(record.buffer_size)))*100
+    @api.depends('qty_available','buffer_size','qty_transit')
+    def _compute_bp_transito(self):
+       for record in self:
+            record.bp_transito = (1-((record.buffer_size-record.qty_sitio-record.qty_transit)/(record.buffer_size)))*100
+    def _compute_bp_solicitud(self):
+        for record in self:
+            record.bp_solicitud = (1-((record.buffer_size-record.qty_ordered-record.qty_sitio-record.qty_transit)/(record.buffer_size)))*100
+    def _compute_bp_disponible(self):
+        for record in self:
+            record.bp_disponible = (1-((record.buffer_size-record.qty_sitio)/(record.buffer_size)))*100
