@@ -8,7 +8,7 @@
                 <tree string="Product list">
                     <field name="buffer_size"/>
                     <field name="oc"/>
-                    <field name="bp_solicitud" class="condition" decoration-info="bp_solicitud=='amarillo'" decoration-muted="bp_solicitu=='rojo"/>
+                    <field name="bp_solicitud" class="condition" decoration-info="bp_solicitud=='amarillo'" decoration-muted="bp_solicitu=='rojo'"/>
                     <field name="qty_transit" />
                     <field name="bp_transito" class="condition" decoration-info="bp_transito=='amarillo" decoration-muted="bp_transito=='rojo'"/>
                     <field name="bp_disponible"/>
