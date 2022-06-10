@@ -10,13 +10,6 @@ class OdooControllers(http.Controller):
         for product in product_ids:
             products.append({
                 'id': product.id,
-                'name': product.name,
-                'qty_ordered': product.qty_ordered,
-                'qty_transit': product.qty_transit,
-                'buffer_size': product.buffer_size,
-                'oc': product.oc,
-                'bp_solicitud': product.bp_solicitud,
-                'bp_transito': product.bp_transito,
-                'bp_disponible': product.bp_disponible,
+                'name': product.name
             })
         return {'products': products}
