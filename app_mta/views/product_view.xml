@@ -13,7 +13,7 @@
                     <field name="bp_solicitud" class="condition" decoration-info="bp_d_ind=='amarillo'" decoration-muted="bp_d_ind=='rojo'"/>
                     <field name="qty_transit" />
                     <field name="bp_transito" class="condition" decoration-info="bp_transito=='amarillo'" decoration-muted="bp_transito=='rojo'"/>
-                    <field name="qty_available" />
+                    <field name="qty_sitio" />
                     <field name="bp_disponible" />
                     <field name="alerta"/>
                 </tree>
