@@ -34,4 +34,4 @@ class MtaProducto(models.Model):
             record.bp_solicitud = (1-((record.buffer_size-record.qty_ordered-record.qty_sitio-record.qty_transit)/(record.buffer_size)))*100
     def _compute_bp_disponible(self):
         for record in self:
-            record.bp_disponible = (1-((record.buffer_size-record.qty_sitio)/(record.buffer_size)))*100
+            record.bp_sitio = (1-((record.buffer_size-record.qty_sitio)/(record.buffer_size)))*100
