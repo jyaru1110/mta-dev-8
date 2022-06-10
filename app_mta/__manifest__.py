@@ -16,6 +16,11 @@
        'views/product_view.xml',
        'views/assets.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'app_mta/static/src/js/javascript.js',
+        ],
+    },
     'demo' : [
         
     ],
