@@ -23,7 +23,7 @@ class MtaProducto(models.Model):
     bp_transito = fields.Integer(string="%BP en transito"
                                , compute='_compute_bp_transito')
     bp_sitio = fields.Integer(string="%BP en sitio",
-                               compute='_compute_bp_disponible')
+                               compute='_compute_bp_sitio')
     alerta = fields.Selection(string="Alerta",selection=[('dv','DV'),('dr','DR'),('na','N/A')])
     @api.depends('qty_sitio','buffer_size','qty_transit')
     def _compute_bp_transito(self):
@@ -31,7 +31,7 @@ class MtaProducto(models.Model):
             record.bp_transito = (1-((record.buffer_size-record.qty_sitio-record.qty_transit)/(record.buffer_size)))*100
     def _compute_bp_solicitud(self):
         for record in self:
-            record.bp_solicitud = (1-((record.buffer_size-record.qty_ordered-record.qty_sitio-record.qty_transit)/(record.buffer_size)))*100
-    def _compute_bp_disponible(self):
+            record.bp_solicitud = (1-((record.buffer_size-record.oc-record.qty_sitio-record.qty_transit)/(record.buffer_size)))*100
+    def _compute_bp_sitio(self):
         for record in self:
             record.bp_sitio = (1-((record.buffer_size-record.qty_sitio)/(record.buffer_size)))*100
