@@ -1,5 +1,0 @@
-<template id="my_custom_assets_view_name" name="my_custom_assets_view_name" inherit_id="web.assets_backend"> 
-           <xpath expr="." position="inside"> 
-               <script type="text/javascript" src="app_mta/static/src/js/javascript.js"></script> 
-           </xpath>
-</template>
