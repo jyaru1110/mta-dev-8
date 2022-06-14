@@ -5,4 +5,6 @@ odoo.define('app_mta.javascript', function (require) {
     var botones = document.getElementsByClassName('condition')
     console.log("condition classes:")
     console.log(botones)
+    console.log(botones.length)
+    
 });
