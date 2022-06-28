@@ -5,15 +5,23 @@ class MtaProducto(models.Model):
     _inherits = {'product.template': 'product_tmpl_id'}
     _name = 'mta.producto'
     _description = 'Product MTA'
-
-    bp_d_ind = fields.Char(string='BP D. Ind.')
-    bp_t_ind = fields.Char(string='BP D. Ind. Desc.')
-    bp_s_ind = fields.Char(string='BP D. Ind. Cod.')
-    product_tmpl_id = fields.Many2one('product.template', 'Product Template', required=True, ondelete='cascade')
-    
+    #bp_d_ind = fields.Char(string='BP D. Ind.')
+    #bp_t_ind = fields.Char(string='BP D. Ind. Desc.')
+    #bp_s_ind = fields.Char(string='BP D. Ind. Cod.')
+    #product.template relation:
+    product_tmpl_id = fields.Many2one('product.product', 'Product Product', required=True, ondelete='cascade')
+    #mta monitoring
+    be_mta_mon = fields.Boolean(string='Es monitoreado por MTA', default=True)
+    dbm_v = fields.Integer(string="Condicion demasiado verde",default=5)
+    dbm_r = fields.Integer(string="Condicion demasiado rojo",default=1)
+    contador_v = fields.Integer(string="Contador de verde")
+    contador_r = fields.Integer(string="Contador de rojo")
+    estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo")
+    #graficos:
+    #cont
+    #attributes
     lt = fields.Integer(string='Tiempo de respuesta del proveedor')
     loteOptimo = fields.Integer(string='Lote óptimo')
-     #Add a new column to the product.template model
     qty_sitio = fields.Integer(string='# sitio')
     qty_transit = fields.Integer(string='# transito')
     buffer_size = fields.Integer(string="Buffer Size",default=1)
@@ -24,7 +32,7 @@ class MtaProducto(models.Model):
                                , compute='_compute_bp_transito')
     bp_sitio = fields.Integer(string="%BP en sitio",
                                compute='_compute_bp_sitio')
-    alerta = fields.Selection(string="Alerta",selection=[('dv','DV'),('dr','DR'),('na','N/A')])
+    alerta = fields.Selection(string="Alerta",selection=[('dv','DV'),('dr','DR'),('na','N/A')], default="na")
     @api.depends('qty_sitio','buffer_size','qty_transit')
     def _compute_bp_transito(self):
        for record in self:
@@ -35,3 +43,34 @@ class MtaProducto(models.Model):
     def _compute_bp_sitio(self):
         for record in self:
             record.bp_sitio = (1-((record.buffer_size-record.qty_sitio)/(record.buffer_size)))*100
+            
+    @api.onchange('qty_available', 'contador_r', 'contador_v', 'buffer_size')
+    def _onchange_qty_available(self):
+        estado_anterior = self.estado
+        if(self.qty_available>=2*self.buffer_size/3):
+            self.estado = 1
+        elif(self.qty_available>=self.buffer_size/3):
+            self.estado = 2
+        else:
+            self.estado = 3
+        if(estado_anterior != self.estado):
+            self.contador_v = 0
+            self.contador_r = 0
+        elif(self.estado == 1):
+            self.contador_v = (self.qty_available-2*self.buffer_size/3)/(self.buffer_size/3)
+        elif(self.estado == 3):
+            self.contador_r = 1-(self.qty_available)/(self.buffer_size/3)
+            
+    def _onchange_buffer_size(self):
+            self.contador_v = 0
+            self.contador_r = 0
+            
+    def _onchange_contador_v(self):
+        if(self.contador_v>=self.dbm_v):
+            self.alerta = 'dv'
+            
+    def _onchange_contador_r(self):
+        if(self.contador_r>=self.dbm_r):
+            self.alerta = 'dr'
+            
+            
