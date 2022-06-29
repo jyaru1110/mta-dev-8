@@ -2,7 +2,7 @@
 from odoo import models, fields, api
 
 class MtaProducto(models.Model):
-    _inherits = {'product.template': 'product_tmpl_id'}
+    _inherits = {'product.product': 'product_tmpl_id'}
     _name = 'mta.producto'
     _description = 'Product MTA'
     #bp_d_ind = fields.Char(string='BP D. Ind.')

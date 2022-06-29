@@ -18,6 +18,7 @@
     'assets': {
         'web.assets_backend': [
             'app_mta/static/src/js/javascript.js',
+            'app_mta/static/src/css/styles.css',
         ],
     },
     'demo' : [
