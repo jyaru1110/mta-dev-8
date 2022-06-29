@@ -25,7 +25,7 @@ class MtaProducto(models.Model):
     qty_sitio = fields.Integer(string='# sitio')
     qty_transit = fields.Integer(string='# transito')
     buffer_size = fields.Integer(string="Buffer Size",default=1)
-    oc = fields.Integer(string="# OC")
+    oc = fields.Integer(string="# OC", default=0)
     bp_solicitud = fields.Integer(string="%BP en solicitadas",
                                 compute='_compute_bp_solicitud')
     bp_transito = fields.Integer(string="%BP en transito"
