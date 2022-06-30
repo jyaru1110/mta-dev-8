@@ -6,4 +6,11 @@ odoo.define('app_mta.javascript', function (require) {
     console.log("condition classes 2:")
     console.log(botones)
     
+    $(document).ready(function(){
+        $('.condition').each((boton)=>{
+            console.log(boton)
+        }
+        )
+    })
+    
 });

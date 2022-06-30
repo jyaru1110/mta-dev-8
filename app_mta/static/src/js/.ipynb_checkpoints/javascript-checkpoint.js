@@ -2,17 +2,15 @@
 
 odoo.define('app_mta.javascript', function (require) {
     require('web.dom_ready');
-    var ajax = require('web.ajax');
-    let botones = document.getElementsByClassName('condition')
-    //var _onButtonClick = function (e) {
-    //    console.log(e)
-    //    ajax.jsonRpc('get_products', 'call', {}).then(function (data) {
-    //        console.log(data)
-    //    });
-    //}
-    //botones[0].addEventListener('click', _onButtonClick);
-    console.log("condition classes:")
+    var botones = document.getElementsByClassName('condition')
+    console.log("condition classes 2:")
     console.log(botones)
-    console.log(botones.length)
+    
+    $(document).ready(function(){
+        $('.condition').each((boton)=>{
+            console.log(boton)
+        }
+        )
+    })
     
 });
