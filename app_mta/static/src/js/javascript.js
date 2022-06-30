@@ -16,6 +16,8 @@ odoo.define('app_mta.javascript', function (require) {
     var botones_array_dos = [...botones];
     console.log(botones_array_dos);
     console.log(botones_array_dos.length);
+    document.write("XXX TEST TEST XXX");
+    document.write(botones);
     /*$( ".condition" ).each( function(parametro) { console.log(parametro);} );
     console.log("tras each");*/
 });
