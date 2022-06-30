@@ -6,6 +6,8 @@ odoo.define('app_mta.javascript', function (require) {
     console.log(botones)
     console.log("Cargado");
     console.log("antes each");
-    $( ".condition" ).each( function(parametro) { console.log(parametro);} );
-    console.log("tras each");
+    console.log($(".condition"))
+    console.log(botones.length)
+    /*$( ".condition" ).each( function(parametro) { console.log(parametro);} );
+    console.log("tras each");*/
 });
