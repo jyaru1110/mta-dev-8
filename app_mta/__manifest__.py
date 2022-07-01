@@ -16,9 +16,9 @@
        'views/product_view.xml'
     ],
     'assets': {
-        'web.assets_common': [
+        'web.assets_backend': [
             ('prepend','app_mta/static/src/js/javascript.js'),
-            'app_mta/static/src/css/styles.css',
+            ('prepend','app_mta/static/src/css/styles.css'),
         ],
     },
     'demo' : [
