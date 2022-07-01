@@ -1,4 +1,4 @@
-odoo.define('app_mta.javascript', function (require) {
+(function () {
     var botones = document.getElementsByClassName('condition')
     console.log("condition classes 4:")
     console.log(botones)
@@ -19,4 +19,4 @@ odoo.define('app_mta.javascript', function (require) {
     document.write(botones);
     /*$( ".condition" ).each( function(parametro) { console.log(parametro);} );
     console.log("tras each");*/
-});
+})();
