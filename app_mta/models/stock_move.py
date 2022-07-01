@@ -9,5 +9,5 @@ class StockMove(models.Model):
         # your logic goes here
         producto = self.env['mta.producto'].search([('id', '=', self.product_id)])
         producto.oc = producto.oc + self.product_uom_qty
-        override_create = super(your_model,self).create(values)
+        override_create = super(StockMove,self).create(values)
         return override_create
