@@ -9,7 +9,7 @@ var ProgressBarWidget = AbstractField.extend({
             this.value = this.recordData[this.nodeOptions.currentValue]
         }
     },
-    _render: function() {
+    _renderReadonly: function() {
         var self = this;
         var value = this.value;
         var max_value = 100;
