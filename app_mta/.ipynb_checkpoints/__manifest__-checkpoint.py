@@ -16,10 +16,13 @@
        'views/product_view.xml'
     ],
     'assets': {
-        'web.assets_backend': [
-            ('prepend','app_mta/static/src/js/javascript.js'),
-            ('prepend','app_mta/static/src/css/styles.css'),
-        ],
+        'web.assets_backend': {
+            '/app_mta/static/src/css/progress_bar_widget.css',
+            '/app_mta/static/src/js/progress_bar_widget.js',
+        },
+        'web.assets_qweb': {
+            '/app_mta/static/src/xml/progress_bar_widget.xml',
+        },
     },
     'demo' : [
         
