@@ -17,11 +17,11 @@
     ],
     'assets': {
         'web.assets_backend': {
-            '/app_mta/static/src/css/progress_bar_widget.css',
-            '/app_mta/static/src/js/progress_bar_widget.js',
+            '/app_mta/static/src/css/my_field_widget.css',
+            '/app_mta/static/src/js/my_field_widget.js',
         },
         'web.assets_qweb': {
-            '/app_mta/static/src/xml/progress_bar_widget.xml',
+            '/app_mta/static/src/xml/my_field_widget.xml',
         },
     },
     'demo' : [
