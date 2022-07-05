@@ -1,6 +1,6 @@
 /** @odoo-module **/
-import AbstractField from 'web.AbstractField';
-import fieldRegistry from 'web.field_registry';
+var AbstractField  = require('web.AbstractField');
+var fieldRegistry = require('web.field_registry');
 var ProgressBarWidget = AbstractField.extend({
     template: "ProgressBarWidget",
     start: function(){
