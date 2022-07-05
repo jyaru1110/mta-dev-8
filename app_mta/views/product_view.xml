@@ -26,7 +26,7 @@
             <field name="model">mta.producto</field>
             <field name="arch" type="xml">
                 <form>
-                    <field name="bp_solicitud"/>
+                    
                 </form>
             </field>
         </record>
