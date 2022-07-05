@@ -5,7 +5,7 @@ var FieldChar = require('web.basic_fields').FieldChar;
 var ProgressBarWidget = FieldChar.extend({
     
     _renderReadonly: function () {
-        var self = this;
+        /*var self = this;
         var value = this.value;
         var max_value = 100;
         value = value || 0;
@@ -15,9 +15,9 @@ var ProgressBarWidget = FieldChar.extend({
         }
         else{
             widthComplete = 100;
-        }
-        this.$('.progress_number').text(widthComplete.toString() + '%');
-        this.$('.progress-bar-inner').css('width', widthComplete + '%');
+        }*/
+        this.$('.progress_number').text('');
+        //this.$('.progress-bar-inner').css('width', widthComplete + '%');
     },
 })
 fieldRegistry.add('progress_bar_widget', ProgressBarWidget);
