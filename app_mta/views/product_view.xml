@@ -27,6 +27,7 @@
             <field name="arch" type="xml">
                 <form string="test">
                     <field name="bp_transito" widget="progress_bar_widget"/>
+                    <field name="buffer_size" widget="progress_bar_widget"/>
                 </form>
             </field>
         </record>
