@@ -1,10 +1,10 @@
 /** @odoo-module **/
-var fieldRegistry = require('web.field_registry');
-var FieldChar = require('web.basic_fields').FieldChar;
+import AbstractField from 'web.AbstractField';
+import fieldRegistry from 'web.field_registry';
 
-var ProgressBarWidget = FieldChar.extend({
+var ProgressBarWidget = AbstractField.extend({
     
-    _renderReadonly: function () {
+    _render: function () {
         /*var self = this;
         var value = this.value;
         var max_value = 100;
