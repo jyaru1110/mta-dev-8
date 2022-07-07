@@ -16,7 +16,7 @@ var ProgressBarWidget = FieldChar.extend({
         else{
             widthComplete = 100;
         }*/
-        this.$('.progress_number').text('');
+        this.$('.progress_number').text('HOLA');
         //this.$('.progress-bar-inner').css('width', widthComplete + '%');
     },
 })
