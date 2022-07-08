@@ -12,5 +12,6 @@ class ProductProduct(models.Model):
         #product_info={'product_tmpl_id':values['id']}
         #self.env['mta.producto'].create(product_info)
         override_create = super(ProductProduct,self).create(values)
-        print(self.id)
+        print(override_create)
+        print(print(override_create))
         return override_create
