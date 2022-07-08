@@ -6,11 +6,7 @@ class ProductProduct(models.Model):
     
     @api.model
     def create(self,values):
-        # your logic goes here
-        print("entra aquí")
-        #print(values)
-        #product_info={'product_tmpl_id':values['id']}
-        #self.env['mta.producto'].create(product_info)
         override_create = super(ProductProduct,self).create(values)
-        print(override_create.id)
+        product_info={'product_tmpl_id':override_create.id}
+        self.env['mta.producto'].create(product_info)
         return override_create
