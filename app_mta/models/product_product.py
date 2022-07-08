@@ -7,7 +7,7 @@ class ProductProduct(models.Model):
     @api.model
     def create(self,values):
         # your logic goes here
-        id_producto = copy(self.id)
+        id_producto = self.id
         print(id_producto)
        # product_info = {'product_tmpl_id':self.id}
         #self.env['mta.producto'].create(product_info)
