@@ -7,7 +7,7 @@ class StockMove(models.Model):
     @api.model
     def create(self,values):
         # your logic goes here
-        producto = self.env['mta.producto'].browse(self.product_id.id)
+        producto = self.env['mta.producto'].browse(values['product_id'])
         print(values)
         if producto:
             print('encontrado')
