@@ -8,9 +8,9 @@ class ProductProduct(models.Model):
     def create(self,values):
         # your logic goes here
         print("entra aquí")
-        print(self)
         #print(values)
         #product_info={'product_tmpl_id':values['id']}
         #self.env['mta.producto'].create(product_info)
         override_create = super(ProductProduct,self).create(values)
+        print(self.id)
         return override_create
