@@ -8,7 +8,7 @@ class StockMove(models.Model):
     def create(self,values):
         # your logic goes here
         producto = self.env['mta.producto'].browse(self.product_id.id)
-        print(self.product_id.name)
+        print(self.product_id['id'])
         if producto:
             print('encontrado')
         oc_actual = producto.oc
