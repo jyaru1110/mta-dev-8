@@ -7,7 +7,7 @@ class StockMove(models.Model):
     @api.model
     def create(self,values):
         # your logic goes here
-        producto = self.env['mta.producto'].search([('id', '=', self.product_id.id)])
+        producto = self.env['mta.producto'].search([('id', '=', self.product_id)])
         producto.oc = producto.oc + self.product_uom_qty
         override_create = super(StockMove,self).create(values)
         return override_create
