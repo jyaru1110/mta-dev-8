@@ -8,10 +8,12 @@ class StockMove(models.Model):
     def create(self,values):
         # your logic goes here
         producto = self.env['mta.producto'].browse(values['product_id'])
-        print(values)
+        print(self.product_uom_qty)
         if producto:
             print('encontrado')
         oc_actual = producto.oc
+        print(producto.oc)
         producto.oc = oc_actual + self.product_uom_qty
+        print(producto.oc)
         override_create = super(StockMove,self).create(values)
         return override_create
