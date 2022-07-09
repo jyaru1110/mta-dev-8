@@ -9,6 +9,6 @@
     height:100%!important;
 }
 
-td{
-    padding:0px!important;
+td .contenedor{
+    color:blue;
 }
