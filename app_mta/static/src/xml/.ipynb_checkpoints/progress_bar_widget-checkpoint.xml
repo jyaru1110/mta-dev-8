@@ -1,6 +1,6 @@
 <templates id="template" xml:space="preserve">
     <t t-name="ProgressBarWidget">
-        <div>
+        <div class="contenedor">
             <span class="background"></span>
         </div>
     </t>
