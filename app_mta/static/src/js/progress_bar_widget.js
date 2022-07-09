@@ -12,7 +12,6 @@ var ProgressBarWidget = AbstractField.extend({
     _render: function() {
         var self = this;
         var value = this.value;
-        console.log(value)
         this.$('.background').text(value);
         if(value<=33 || value=='dv'){
             this.$('.background').css('background-color','green');
