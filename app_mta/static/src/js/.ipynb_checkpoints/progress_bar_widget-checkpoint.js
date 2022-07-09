@@ -12,17 +12,18 @@ var ProgressBarWidget = AbstractField.extend({
     _render: function() {
         var self = this;
         var value = this.value;
-        this.$('.background').text(value);
+        if(value!='na' && value!='dv' && value!='dr'){
+            this.$('.background').text(value);
+        }
         if(value<=33 || value=='dv'){
             this.$('.background').css('background-color','green');
         }else{
             if(value<=66){
                 this.$('.background').css('background-color','yellow');
             }else{
-                if(value=='dr'){
+                if(value=='dr' || value>66){
                     this.$('.background').css('background-color','red');
                 }
-                this.$('.background').css('background-color','red');
             }
         }
     },
