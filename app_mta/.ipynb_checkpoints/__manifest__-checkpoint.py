@@ -17,7 +17,7 @@
     ],
     'assets': {
         'web.assets_backend': [
-            '/app_mta/static/src/css/progress_bar_widget.css',
+            ('prepend','/app_mta/static/src/css/progress_bar_widget.css'),
             '/app_mta/static/src/js/progress_bar_widget.js',
         ],
         'web.assets_qweb': [
