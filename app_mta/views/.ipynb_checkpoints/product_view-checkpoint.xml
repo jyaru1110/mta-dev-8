@@ -25,7 +25,7 @@
             <field name="name">producto.mta.form</field>
             <field name="model">mta.producto</field>
             <field name="arch" type="xml">
-                <form string="test">
+                <form string="TEST">
                 </form>
             </field>
         </record>
