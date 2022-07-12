@@ -17,7 +17,7 @@
                     <field name="bp_transito" widget="progress_bar_widget"/>
                     <field name="qty_sitio"/>
                     <field name="bp_sitio" widget="progress_bar_widget"/>
-                    <field name="alerta" widget="progress_bar_widget"/>
+                    <field name="alerta"/>
                 </tree>
             </field>
         </record>
