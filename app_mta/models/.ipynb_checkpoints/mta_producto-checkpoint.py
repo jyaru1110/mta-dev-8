@@ -36,13 +36,13 @@ class MtaProducto(models.Model):
     @api.depends('qty_sitio','buffer_size','qty_transit')
     def _compute_bp_transito(self):
        for record in self:
-            record.bp_transito = (1-((record.buffer_size-record.qty_sitio-record.qty_transit)/(record.buffer_size)))*100
+            record.bp_transito = ((record.buffer_size-record.qty_sitio-record.qty_transit)/(record.buffer_size))*100
     def _compute_bp_solicitud(self):
         for record in self:
-            record.bp_solicitud = (1-((record.buffer_size-record.oc-record.qty_sitio-record.qty_transit)/(record.buffer_size)))*100
+            record.bp_solicitud = ((record.buffer_size-record.oc-record.qty_sitio-record.qty_transit)/(record.buffer_size))*100
     def _compute_bp_sitio(self):
         for record in self:
-            record.bp_sitio = (1-((record.buffer_size-record.qty_sitio)/(record.buffer_size)))*100
+            record.bp_sitio = ((record.buffer_size-record.qty_sitio)/(record.buffer_size))*100
             
     @api.onchange('qty_available', 'contador_r', 'contador_v', 'buffer_size')
     def _onchange_qty_available(self):
