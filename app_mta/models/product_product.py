@@ -22,6 +22,8 @@ class ProductProduct(models.Model):
         override_write = super(ProductProduct,self).write(values)
         producto = self.env['mta.producto'].browse(override_write.id)
         print(values)
+        print(self)
+        print(override_write)
         producto.dbm_v = values['dbm_v']
         producto.dbm_r = values['dbm_r']
         producto.be_mta_mon = values['be_mta_mon']
