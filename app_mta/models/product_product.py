@@ -21,7 +21,7 @@ class ProductProduct(models.Model):
         # your logic goes here
         producto = self.env['mta.producto'].browse(self.id)
         producto.dbm_v = values['dbm_v']
-        producto.dbm_r = values['dbm_v']
+        producto.dbm_r = values['dbm_r']
         producto.be_mta_mon = values['be_mta_mon']
         producto.lt = values['lt']
         producto.loteOptimo = values['loteOptimo']
