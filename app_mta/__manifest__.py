@@ -9,12 +9,11 @@
     'category' : 'Training',
     'version' : '0.1',
     'depends' : ['sale','stock'],
-    'data':[
-       'security/mta_security.xml',  
-       'security/ir.model.access.csv',
-       'views/mta_app_view.xml',
-       'views/product_view.xml',
-        #'views/product_views_inherit.xml'
+    'data':['security/mta_security.xml',
+            'security/ir.model.access.csv',
+            'views/mta_app_view.xml',
+            'views/product_view.xml',
+            'views/product_views_inherit.xml'
     ],
     'assets': {
         'web.assets_backend': [

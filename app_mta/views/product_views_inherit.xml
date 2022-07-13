@@ -6,8 +6,8 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
-                <xpath name="//notebook" position="inside">
-                    <page>
+                <xpath expr="//notebook" position="inside">
+                    <page string="MTA configuraciones">
                         <field name="be_mta_mon"/>
                         <field name="dbm_v"/>
                         <field name="dbm_r"/>
