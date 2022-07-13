@@ -15,7 +15,7 @@
                     <field name="bp_solicitud" widget="progress_bar_widget"/>
                     <field name="qty_transit"/>
                     <field name="bp_transito" widget="progress_bar_widget"/>
-                    <field name="qty_sitio"/>
+                    <field name="qty_available"/>
                     <field name="bp_sitio" widget="progress_bar_widget"/>
                     <field name="alerta"/>
                 </tree>

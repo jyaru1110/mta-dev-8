@@ -5,9 +5,7 @@ class MtaProducto(models.Model):
     _inherits = {'product.product': 'product_tmpl_id'}
     _name = 'mta.producto'
     _description = 'Product MTA'
-    #bp_d_ind = fields.Char(string='BP D. Ind.')
-    #bp_t_ind = fields.Char(string='BP D. Ind. Desc.')
-    #bp_s_ind = fields.Char(string='BP D. Ind. Cod.')
+   
     #product.template relation:
     product_tmpl_id = fields.Many2one('product.product', 'Product Product', required=True, ondelete='cascade')
     #mta monitoring
@@ -22,7 +20,7 @@ class MtaProducto(models.Model):
     #attributes
     lt = fields.Integer(string='Tiempo de respuesta del proveedor')
     loteOptimo = fields.Integer(string='Lote óptimo')
-    qty_sitio = fields.Integer(string='# sitio')
+    #qty_sitio = fields.Integer(string='# sitio')
     qty_transit = fields.Integer(string='# transito')
     buffer_size = fields.Integer(string="Buffer Size",default=1)
     oc = fields.Integer(string="# OC", default=0)
@@ -33,16 +31,16 @@ class MtaProducto(models.Model):
     bp_sitio = fields.Integer(string="%BP en sitio",
                                compute='_compute_bp_sitio')
     alerta = fields.Selection(string="Alerta",selection=[('dv','DV'),('dr','DR'),('na','N/A')], default="na")
-    @api.depends('qty_sitio','buffer_size','qty_transit')
+    @api.depends('buffer_size','qty_transit','qty_available')
     def _compute_bp_transito(self):
        for record in self:
-            record.bp_transito = ((record.buffer_size-record.qty_sitio-record.qty_transit)/(record.buffer_size))*100
+            record.bp_transito = ((record.buffer_size-record.qty_available-record.qty_transit)/(record.buffer_size))*100
     def _compute_bp_solicitud(self):
         for record in self:
-            record.bp_solicitud = ((record.buffer_size-record.oc-record.qty_sitio-record.qty_transit)/(record.buffer_size))*100
+            record.bp_solicitud = ((record.buffer_size-record.oc-record.qty_available-record.qty_transit)/(record.buffer_size))*100
     def _compute_bp_sitio(self):
         for record in self:
-            record.bp_sitio = ((record.buffer_size-record.qty_sitio)/(record.buffer_size))*100
+            record.bp_sitio = ((record.buffer_size-record.qty_available)/(record.buffer_size))*100
             
     @api.onchange('qty_available', 'contador_r', 'contador_v', 'buffer_size')
     def _onchange_qty_available(self):

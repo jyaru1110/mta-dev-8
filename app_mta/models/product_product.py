@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class ProductProduct(models.Model):
     _inherit = 'product.product'
     
+    
     @api.model
     def create(self,values):
         override_create = super(ProductProduct,self).create(values)
