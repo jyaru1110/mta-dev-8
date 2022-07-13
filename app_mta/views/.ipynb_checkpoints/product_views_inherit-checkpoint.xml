@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="product_temp_only_form_view_inherit_mta">
+            <field name="name">product.product.product.form.inherit.mta</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath name="//notebook" position="inside">
+                    <page>
+                        <field name="be_mta_mon"/>
+                        <field name="dbm_v"/>
+                        <field name="dbm_r"/>
+                        <field name="loteOptimo"/>
+                        <field name="lt"/>
+                        <field name="qty_transit"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
