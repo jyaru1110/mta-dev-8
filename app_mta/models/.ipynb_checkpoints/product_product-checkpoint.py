@@ -23,7 +23,7 @@ class ProductProduct(models.Model):
         override_write = super(ProductProduct,self).write(values)
         #producto = self.env['mta.producto'].browse(override_write.id)
         print("Values: ",values)
-        print("Self: ",self.id)
+        print("Self: ",self._origin.id)
         print("Override_write: ",override_write)
         #producto.dbm_v = values['dbm_v']
         #producto.dbm_r = values['dbm_r']
