@@ -14,8 +14,7 @@ class ProductProduct(models.Model):
     @api.model
     def create(self,values):
         override_create = super(ProductProduct,self).create(values)
-        print(override_create.buffer_size)
-        product_info={'product_tmpl_id':override_create.id,'be_mta_mon':override_create.be_mta_mon,'dbm_v':override_create.dbm_v,'dbm_r':override_create.dbm_r,'lt':override_create.lt,'loteOptimo':override_create.loteOptimo,'qty_transit':override_create.qty_transit}
+        product_info={'product_tmpl_id':override_create.id,'be_mta_mon':override_create.be_mta_mon,'dbm_v':override_create.dbm_v,'dbm_r':override_create.dbm_r,'lt':override_create.lt,'loteOptimo':override_create.loteOptimo,'qty_transit':override_create.qty_transit, 'buffer_size':override_create.buffer_size}
         self.env['mta.producto'].create(product_info)
         return override_create
     
