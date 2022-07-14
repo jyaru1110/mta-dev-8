@@ -14,6 +14,7 @@
                         <field name="loteOptimo"/>
                         <field name="lt"/>
                         <field name="qty_transit"/>
+                        <field name="buffer_size"/>
                     </page>
                 </xpath>
             </field>

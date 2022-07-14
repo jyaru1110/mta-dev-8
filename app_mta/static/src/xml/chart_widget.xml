@@ -1,0 +1,7 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="ChartWidget">
+        <div class="contenedor">
+            <canvas data-bss-chart="{"type":"line","data":{"labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"],"datasets":[{"label":"Donaciones","fill":true,"data":["0","10000","5000","15000","10000","20000","15000","25000"],"backgroundColor":"rgba(78,115,223,0.4)","borderColor":"rgba(78, 115, 223, 1)"}]},"options":{"maintainAspectRatio":false,"legend":{"display":false,"reverse":false,"labels":{"fontStyle":"normal"}},"title":{"display":false,"text":"","fontStyle":"normal"},"scales":{"xAxes":[{"gridLines":{"color":"rgb(234, 236, 244)","zeroLineColor":"rgb(234, 236, 244)","drawBorder":false,"drawTicks":false,"borderDash":["2"],"zeroLineBorderDash":["2"],"drawOnChartArea":true},"ticks":{"fontColor":"#2d2d2d","fontStyle":"normal","beginAtZero":false,"padding":20}}],"yAxes":[{"gridLines":{"color":"rgb(234, 236, 244)","zeroLineColor":"rgb(234, 236, 244)","drawBorder":false,"drawTicks":false,"borderDash":["2"],"zeroLineBorderDash":["2"],"drawOnChartArea":true},"ticks":{"fontColor":"#2d2d2d","fontStyle":"normal","beginAtZero":false,"padding":20}}]}}}" style="display: block; width: 693px; height: 150px;" width="693" height="150" class="chartjs-render-monitor"></canvas>
+        </div>
+    </t>
+</templates>
