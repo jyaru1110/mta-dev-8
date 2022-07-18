@@ -22,14 +22,24 @@ class ProductProduct(models.Model):
         # your logic goes here
         override_write = super(ProductProduct,self).write(values)
         producto = self.env['mta.producto'].browse(self._origin.id)
-        print('Producto',producto)
-        print("Values: ",values)
-        print("Self: ",self._origin.id)
-        print("Override_write: ",override_write)
-        producto.dbm_v = values['dbm_v']
-        producto.dbm_r = values['dbm_r']
-        producto.be_mta_mon = values['be_mta_mon']
-        producto.lt = values['lt']
-        producto.loteOptimo = values['loteOptimo']
-        producto.qty_transit = values['qty_transit']
-        return override_write
+        if(producto):
+            print('Producto',producto)
+            print("Values: ",values)
+            print("Self: ",self._origin.id)
+            print("Override_write: ",override_write)
+            print("producto.dbm_v",producto.dbm_v)
+            print("values['dbm_v']",values['dbm_v'])
+        
+            if values['dbm_v']:
+                producto.dbm_v = values['dbm_v']
+            if values['dbm_r']:
+                producto.dbm_r = values['dbm_r']
+            if values['be_mta_mon']:
+                producto.be_mta_mon = values['be_mta_mon']
+            if values['lt']:
+                producto.lt = values['lt']
+            if values['loteOptimo']:
+                producto.loteOptimo = values['loteOptimo']
+            if values['qty_transit']:
+                producto.qty_transit = values['qty_transit']
+            return override_write
