@@ -26,7 +26,10 @@
             <field name="model">mta.producto</field>
             <field name="arch" type="xml">
                 <form string="TEST">
-                    <field name="buffer_size" widget="chart_widget"/>
+                    <group>
+                        <field name="buffer_size" widget="chart_widget"/>
+                        <field name="product_tmpl_id"/>
+                    </group>
                 </form>
             </field>
         </record>

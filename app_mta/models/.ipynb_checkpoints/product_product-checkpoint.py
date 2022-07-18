@@ -21,14 +21,15 @@ class ProductProduct(models.Model):
     def write(self,values):
         # your logic goes here
         override_write = super(ProductProduct,self).write(values)
-        #producto = self.env['mta.producto'].browse(override_write.id)
+        producto = self.env['mta.producto'].browse(self._origin.id)
+        print('Producto',producto)
         print("Values: ",values)
         print("Self: ",self._origin.id)
         print("Override_write: ",override_write)
-        #producto.dbm_v = values['dbm_v']
-        #producto.dbm_r = values['dbm_r']
-        #producto.be_mta_mon = values['be_mta_mon']
-        #producto.lt = values['lt']
-        #producto.loteOptimo = values['loteOptimo']
-        #producto.qty_transit = values['qty_transit']
+        producto.dbm_v = values['dbm_v']
+        producto.dbm_r = values['dbm_r']
+        producto.be_mta_mon = values['be_mta_mon']
+        producto.lt = values['lt']
+        producto.loteOptimo = values['loteOptimo']
+        producto.qty_transit = values['qty_transit']
         return override_write

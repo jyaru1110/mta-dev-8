@@ -8,13 +8,16 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
                     <page string="MTA configuraciones">
-                        <field name="be_mta_mon"/>
-                        <field name="dbm_v"/>
-                        <field name="dbm_r"/>
-                        <field name="loteOptimo"/>
-                        <field name="lt"/>
-                        <field name="qty_transit"/>
-                        <field name="buffer_size"/>
+                        <group>
+                            <field name="id" attrs="{'invisible':[('id','!=','False')]}"/>
+                            <field name="be_mta_mon"/>
+                            <field name="dbm_v"/>
+                            <field name="dbm_r"/>
+                            <field name="loteOptimo"/>
+                            <field name="lt"/>
+                            <field name="qty_transit"/>
+                            <field name="buffer_size"/>
+                        </group>
                     </page>
                 </xpath>
             </field>
