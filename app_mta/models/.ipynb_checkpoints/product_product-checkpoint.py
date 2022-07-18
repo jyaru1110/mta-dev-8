@@ -21,7 +21,7 @@ class ProductProduct(models.Model):
     def write(self,values):
         # your logic goes here
         override_write = super(ProductProduct,self).write(values)
-        producto = self.env['mta.producto'].browse(self._origin.id)
+        producto = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
         if(producto):
             print('Producto',producto)
             print("Values: ",values)
