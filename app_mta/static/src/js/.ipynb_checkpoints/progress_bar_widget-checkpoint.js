@@ -26,6 +26,10 @@ var ProgressBarWidget = AbstractField.extend({
                 }else{
                     if(value.length==2){
                         this.$('.background').css('padding','10% 38%');
+                    }else{
+                        if(value.length==6){
+                            this.$('.background').css('padding','10% 27%');
+                        }
                     }
                 }
             }

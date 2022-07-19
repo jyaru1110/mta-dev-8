@@ -6,6 +6,9 @@ class MtaProducto(models.Model):
     _name = 'mta.producto'
     _description = 'Product MTA'
    
+    buffer_changes = fields.One2many(comodel_name='buffer.time',
+                                  inverse_name = 'product_id',
+                                  string = 'Cambios en buffer')
     #product.template relation:
     product_tmpl_id = fields.Many2one('product.product', 'Product Product', required=True, ondelete='cascade')
     #mta monitoring
