@@ -27,19 +27,17 @@ class ProductProduct(models.Model):
             print("Values: ",values)
             print("Self: ",self._origin.id)
             print("Override_write: ",override_write)
-            print("producto.dbm_v",producto.dbm_v)
-            print("values['dbm_v']",values['dbm_v'])
         
-            if values.key('dbm_v') != None:
+            if 'dbm_v' in values:
                 producto.dbm_v = values['dbm_v']
-            #if values['dbm_r']:
-            #    producto.dbm_r = values['dbm_r']
-            #if values['be_mta_mon']:
-            #    producto.be_mta_mon = values['be_mta_mon']
-            #if values['lt']:
-            #    producto.lt = values['lt']
-            #if values['loteOptimo']:
-            #    producto.loteOptimo = values['loteOptimo']
-            #if values['qty_transit']:
-            #    producto.qty_transit = values['qty_transit']
+            if 'dbm_r' in values:
+                producto.dbm_r = values['dbm_r']
+            if 'be_mta_mon' in values:
+                producto.be_mta_mon = values['be_mta_mon']
+            if 'lt' in values:
+                producto.lt = values['lt']
+            if 'loteOptimo' in values:
+                producto.loteOptimo = values['loteOptimo']
+            if 'qty_transit' in values:
+               producto.qty_transit = values['qty_transit']
             return override_write
