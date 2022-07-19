@@ -23,11 +23,6 @@ class ProductProduct(models.Model):
         override_write = super(ProductProduct,self).write(values)
         producto = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
         if(producto):
-            print('Producto',producto)
-            print("Values: ",values)
-            print("Self: ",self._origin.id)
-            print("Override_write: ",override_write)
-        
             if 'dbm_v' in values:
                 producto.dbm_v = values['dbm_v']
             if 'dbm_r' in values:
@@ -40,4 +35,6 @@ class ProductProduct(models.Model):
                 producto.loteOptimo = values['loteOptimo']
             if 'qty_transit' in values:
                producto.qty_transit = values['qty_transit']
+            if 'buffer_size' in values:
+                producto.buffer_size = values['buffer_size']
             return override_write
