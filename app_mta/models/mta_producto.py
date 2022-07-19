@@ -45,7 +45,7 @@ class MtaProducto(models.Model):
         for record in self:
             record.bp_sitio = ((record.buffer_size-record.qty_available)/(record.buffer_size))*100
             
-    @api.onchange('qty_available', 'contador_r', 'contador_v', 'buffer_size')
+    @api.onchange('qty_available', 'buffer_size', 'contador_v', 'contador_r')
     def _onchange_qty_available(self):
         estado_anterior = self.estado
         if(self.qty_available>=2*self.buffer_size/3):
@@ -65,6 +65,8 @@ class MtaProducto(models.Model):
     def _onchange_buffer_size(self):
             self.contador_v = 0
             self.contador_r = 0
+            self.env['buffer.time'].create({'product_id':self.id,'buffer_size':self.buffer_size})
+            print('buffer changes')
             
     def _onchange_contador_v(self):
         if(self.contador_v>=self.dbm_v):
