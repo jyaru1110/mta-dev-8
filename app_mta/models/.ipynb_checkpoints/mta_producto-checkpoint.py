@@ -1,4 +1,4 @@
-´# -*- coding utf-8 -*- 
+# -*- coding utf-8 -*- 
 from odoo import models, fields, api
 
 class MtaProducto(models.Model):
@@ -18,6 +18,7 @@ class MtaProducto(models.Model):
     contador_v = fields.Integer(string="Contador de verde")
     contador_r = fields.Integer(string="Contador de rojo")
     estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo")
+    #recomendacion = fields.Selection(string="Recomendación", selection=[('')])
     #graficos:
     #cont
     #attributes
@@ -46,40 +47,37 @@ class MtaProducto(models.Model):
             record.bp_sitio = ((record.buffer_size-record.qty_available)/(record.buffer_size))*100
     
     def write(self,values):
+        print(self._origin.buffer_changes)
+        actual_buffer_size = self._origin.buffer_size
+        actual_estado = self._origin.estado
+        if 'buffer_size' in values:
+            if(values['buffer_size']!=actual_buffer_size):
+                values['contador_v'] = 0
+                values['contador_r'] = 0
+                self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
+        if 'qty_available' in values:
+            if(values['qty_available']>=2*self.buffer_size/3):
+                values['estado'] = 1
+            elif(values['qty_available']>=values['buffer_size']/3):
+                values['estado'] = 2
+            else:
+                values['estado'] = 3
+            if(actual_estado != values['estado'] and values['estado']==2):
+                values['contador_v'] = 0
+                values['contador_r'] = 0
         override_write = super(MtaProducto,self).write(values)
-        print(self._origin.buffer_size)
-    #@api.onchange('qty_available', 'buffer_size', 'contador_v', 'contador_r')
-    def _onchange_qty_available(self):
-        #estado_anterior = self.estado
-        self.estado = 100
-        print("CAMBIO QTY AVAILABLE")
-        if(self.qty_available>=2*self.buffer_size/3):
-            self.estado = 1
-        elif(self.qty_available>=self.buffer_size/3):
-            self.estado = 2
-        else:
-            self.estado = 3
-        if(estado_anterior != self.estado):
-            self.contador_v = 0
-            self.contador_r = 0
-        elif(self.estado == 1):
-            self.contador_v = (self.qty_available-2*self.buffer_size/3)/(self.buffer_size/3)
-        elif(self.estado == 3):
-            self.contador_r = 1-(self.qty_available)/(self.buffer_size/3)
-            
-    #@api.onchange('qty_available', 'buffer_size', 'contador_v', 'contador_r')
-    #def _onchange_buffer_size(self):
-    #        self.contador_v = 0
-    #        self.contador_r = 0
-    #        self.env['buffer.time'].create({'product_id':self.id,'buffer_size':self.buffer_size})
-    #        print('buffer changes')
-            
-    #def _onchange_contador_v(self):
-     #   if(self.contador_v>=self.dbm_v):
-      #      self.alerta = 'dv'
-            
-    #def _onchange_contador_r(self):
-     #   if(self.contador_r>=self.dbm_r):
-      #      self.alerta = 'dr'
-            
+        
+        
+        
+    def daily(self):
+        if(self._origin.estado == 1):
+                self._origin.contador_v = (self._origin.qty_available-2*self._origin.buffer_size/3)/(self._origin.buffer_size/3)
+        elif(self._origin.estado == 3):
+                self._origin.contador_r = 1-(self._origin.qty_available)/(self._origin.buffer_size/3)
+                
+        if(self._origin.contador_v>=self._origin.dbm_v):
+            self._origin.alerta = 'dv'
+        if(self._origin.contador_r>=self._origin.dbm_r):
+            self._origin.alerta = 'dr'
+        
             
