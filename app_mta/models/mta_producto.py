@@ -44,11 +44,15 @@ class MtaProducto(models.Model):
     def _compute_bp_sitio(self):
         for record in self:
             record.bp_sitio = ((record.buffer_size-record.qty_available)/(record.buffer_size))*100
-            
-    @api.onchange('qty_available', 'buffer_size', 'contador_v', 'contador_r')
+    
+    def write(self,values):
+        override_write = super(ProductProduct,self).write(values)
+        print(self._origin.buffer_size)
+    #@api.onchange('qty_available', 'buffer_size', 'contador_v', 'contador_r')
     def _onchange_qty_available(self):
         #estado_anterior = self.estado
         self.estado = 100
+        print("CAMBIO QTY AVAILABLE")
         if(self.qty_available>=2*self.buffer_size/3):
             self.estado = 1
         elif(self.qty_available>=self.buffer_size/3):
