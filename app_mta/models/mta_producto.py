@@ -47,7 +47,8 @@ class MtaProducto(models.Model):
             record.bp_sitio = ((record.buffer_size-record.qty_available)/(record.buffer_size))*100
     
     def write(self,values):
-        print(self._origin.buffer_changes)
+        print("tipo",type(self._origin.buffer_changes))
+        print("[0]",self._origin.buffer_changes[0])
         actual_buffer_size = self._origin.buffer_size
         actual_estado = self._origin.estado
         if 'buffer_size' in values:
