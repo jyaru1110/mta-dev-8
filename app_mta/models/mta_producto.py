@@ -47,7 +47,8 @@ class MtaProducto(models.Model):
             
     @api.onchange('qty_available', 'buffer_size', 'contador_v', 'contador_r')
     def _onchange_qty_available(self):
-        estado_anterior = self.estado
+        #estado_anterior = self.estado
+        self.estado = 100
         if(self.qty_available>=2*self.buffer_size/3):
             self.estado = 1
         elif(self.qty_available>=self.buffer_size/3):
@@ -62,18 +63,19 @@ class MtaProducto(models.Model):
         elif(self.estado == 3):
             self.contador_r = 1-(self.qty_available)/(self.buffer_size/3)
             
-    def _onchange_buffer_size(self):
-            self.contador_v = 0
-            self.contador_r = 0
-            self.env['buffer.time'].create({'product_id':self.id,'buffer_size':self.buffer_size})
-            print('buffer changes')
+    #@api.onchange('qty_available', 'buffer_size', 'contador_v', 'contador_r')
+    #def _onchange_buffer_size(self):
+    #        self.contador_v = 0
+    #        self.contador_r = 0
+    #        self.env['buffer.time'].create({'product_id':self.id,'buffer_size':self.buffer_size})
+    #        print('buffer changes')
             
-    def _onchange_contador_v(self):
-        if(self.contador_v>=self.dbm_v):
-            self.alerta = 'dv'
+    #def _onchange_contador_v(self):
+     #   if(self.contador_v>=self.dbm_v):
+      #      self.alerta = 'dv'
             
-    def _onchange_contador_r(self):
-        if(self.contador_r>=self.dbm_r):
-            self.alerta = 'dr'
+    #def _onchange_contador_r(self):
+     #   if(self.contador_r>=self.dbm_r):
+      #      self.alerta = 'dr'
             
             
