@@ -1,4 +1,4 @@
-# -*- coding utf-8 -*- 
+´# -*- coding utf-8 -*- 
 from odoo import models, fields, api
 
 class MtaProducto(models.Model):
@@ -46,7 +46,7 @@ class MtaProducto(models.Model):
             record.bp_sitio = ((record.buffer_size-record.qty_available)/(record.buffer_size))*100
     
     def write(self,values):
-        override_write = super(ProductProduct,self).write(values)
+        override_write = super(MtaProducto,self).write(values)
         print(self._origin.buffer_size)
     #@api.onchange('qty_available', 'buffer_size', 'contador_v', 'contador_r')
     def _onchange_qty_available(self):
