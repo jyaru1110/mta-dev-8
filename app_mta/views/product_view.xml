@@ -18,6 +18,7 @@
                     <field name="qty_available"/>
                     <field name="bp_sitio" widget="progress_bar_widget"/>
                     <field name="alerta"/>
+                    <field name="contador_v"/>
                 </tree>
             </field>
         </record>
