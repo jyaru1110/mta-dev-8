@@ -49,6 +49,8 @@ class MtaProducto(models.Model):
     def write(self,values):
         print("tipo",type(self._origin.buffer_changes))
         print("[0]",self._origin.buffer_changes[0])
+        print("len",len(self._origin.buffer_changes))
+        print("create date", self._origin.buffer_changes[len(self._origin.buffer_changes)-1])
         actual_buffer_size = self._origin.buffer_size
         actual_estado = self._origin.estado
         if 'buffer_size' in values:
