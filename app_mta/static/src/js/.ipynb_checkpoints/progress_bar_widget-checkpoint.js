@@ -12,7 +12,7 @@ var ProgressBarWidget = AbstractField.extend({
     _render: function() {
         var self = this;
         var value = this.value;
-        this.$('.background').text(value);
+        this.$('.background').text(value + "%");
         
         var value = this.value.toString();
         if(value.length == 4){

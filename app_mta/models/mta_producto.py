@@ -18,7 +18,7 @@ class MtaProducto(models.Model):
     contador_v = fields.Integer(string="Contador de verde")
     contador_r = fields.Integer(string="Contador de rojo")
     estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo")
-    #recomendacion = fields.Selection(string="Recomendación", selection=[('')])
+    recomendacion = fields.Selection(string="Recomendación", selection=[('ibs','Incrementar buffer size'),('dbs','Reducir buffer_size')])
     #graficos:
     #cont
     #attributes
@@ -47,10 +47,6 @@ class MtaProducto(models.Model):
             record.bp_sitio = ((record.buffer_size-record.qty_available)/(record.buffer_size))*100
     
     def write(self,values):
-        print("tipo",type(self._origin.buffer_changes))
-        print("[0]",self._origin.buffer_changes[0])
-        print("len",len(self._origin.buffer_changes))
-        print("create date", self._origin.buffer_changes[len(self._origin.buffer_changes)-1])
         actual_buffer_size = self._origin.buffer_size
         actual_estado = self._origin.estado
         if 'buffer_size' in values:
@@ -82,5 +78,17 @@ class MtaProducto(models.Model):
             self._origin.alerta = 'dv'
         if(self._origin.contador_r>=self._origin.dbm_r):
             self._origin.alerta = 'dr'
-        
             
+        if (self._origin.alerta == 'dv'):
+            now = datetime.now()
+            last_buffer_size_update = self._origin.buffer_changes[len(self._origin.buffer_changes)-1].create_date
+            delta_time = now - last_buffer_size_update
+            if(delta_time>self._origin.lt and self._origin.lt!=0):
+                self._origin.recomendacion = 'dbs'
+                
+        if (self._origin.alerta == 'dr'):
+            now = datetime.now()
+            last_buffer_size_update = self._origin.buffer_changes[len(self._origin.buffer_changes)-1].create_date
+            delta_time = now - last_buffer_size_update
+            if(delta_time>self._origin.lt and self._origin.lt1!=0):
+                self._origin.recomendacion = 'ibs'
