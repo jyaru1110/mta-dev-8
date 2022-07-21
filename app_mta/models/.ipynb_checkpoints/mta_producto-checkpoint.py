@@ -1,5 +1,6 @@
 # -*- coding utf-8 -*- 
 from odoo import models, fields, api
+from datetime import datetime
 
 class MtaProducto(models.Model):
     _inherits = {'product.product': 'product_tmpl_id'}
@@ -69,26 +70,28 @@ class MtaProducto(models.Model):
         
         
     def daily(self):
-        self._origin.buffer_size = 20
-        if(self._origin.buffer_size!=0):
-            self._origin.contador_v = (self._origin.qty_available-2*self._origin.buffer_size/3)/(self._origin.buffer_size/3)
-            self._origin.contador_r = 1-(self._origin.qty_available)/(self._origin.buffer_size/3)
+        productos = self.env['mta.producto'].search([('buffer_size','!=',0)])
+        for producto in productos:
+            producto.contador_v = (producto.qty_available-2*producto.buffer_size/3)/(producto.buffer_size/3)
+            producto.contador_r = 1-(producto.qty_available)/(producto.buffer_size/3)
                 
-        if(self._origin.contador_v>=self._origin.dbm_v):
-            self._origin.alerta = 'dv'
-        if(self._origin.contador_r>=self._origin.dbm_r):
-            self._origin.alerta = 'dr'
+            if(producto.contador_v>=producto.dbm_v):
+                producto.alerta = 'dv'
+            if(producto.contador_r>=producto.dbm_r):
+                producto.alerta = 'dr'
             
-        if (self._origin.alerta == 'dv'):
-            now = datetime.now()
-            last_buffer_size_update = self._origin.buffer_changes[len(self._origin.buffer_changes)-1].create_date
-            delta_time = now - last_buffer_size_update
-            if(delta_time>self._origin.lt and self._origin.lt!=0):
-                self._origin.recomendacion = 'dbs'
+            if (producto.alerta == 'dv'):
+                if(producto.buffer_changes):
+                    now = datetime.now()
+                    last_buffer_size_update = producto.buffer_changes[len(producto.buffer_changes)-1].create_date
+                    delta_time = now - last_buffer_size_update
+                    if(delta_time.days>producto.lt and producto.lt!=0):
+                        producto.recomendacion = 'dbs'
                 
-        if (self._origin.alerta == 'dr'):
-            now = datetime.now()
-            last_buffer_size_update = self._origin.buffer_changes[len(self._origin.buffer_changes)-1].create_date
-            delta_time = now - last_buffer_size_update
-            if(delta_time>self._origin.lt and self._origin.lt1!=0):
-                self._origin.recomendacion = 'ibs'
+            if (producto.alerta == 'dr'):
+                if(producto.buffer_changes):
+                    now = datetime.now()
+                    last_buffer_size_update = producto.buffer_changes[len(producto.buffer_changes)-1].create_date
+                    delta_time = now - last_buffer_size_update
+                    if(delta_time.days>producto.lt and producto.lt!=0):
+                        producto.recomendacion = 'ibs'
