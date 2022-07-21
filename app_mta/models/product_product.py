@@ -37,4 +37,6 @@ class ProductProduct(models.Model):
                producto.qty_transit = values['qty_transit']
             if 'buffer_size' in values:
                 producto.buffer_size = values['buffer_size']
+            if 'qty_available' in values:
+                producto.qty_available = values['qty_available']
             return override_write
