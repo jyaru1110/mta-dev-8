@@ -69,10 +69,10 @@ class MtaProducto(models.Model):
         
         
     def daily(self):
-        if(self._origin.estado == 1):
-                self._origin.contador_v = (self._origin.qty_available-2*self._origin.buffer_size/3)/(self._origin.buffer_size/3)
-        elif(self._origin.estado == 3):
-                self._origin.contador_r = 1-(self._origin.qty_available)/(self._origin.buffer_size/3)
+        self._origin.buffer_size = 20
+        if(self._origin.buffer_size!=0):
+            self._origin.contador_v = (self._origin.qty_available-2*self._origin.buffer_size/3)/(self._origin.buffer_size/3)
+            self._origin.contador_r = 1-(self._origin.qty_available)/(self._origin.buffer_size/3)
                 
         if(self._origin.contador_v>=self._origin.dbm_v):
             self._origin.alerta = 'dv'
