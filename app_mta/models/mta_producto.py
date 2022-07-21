@@ -35,7 +35,7 @@ class MtaProducto(models.Model):
                                , compute='_compute_bp_transito')
     bp_sitio = fields.Integer(string="%BP en sitio",
                                compute='_compute_bp_sitio')
-    alerta = fields.Selection(string="Alerta",selection=[('dv','DV'),('dr','DR'),('na','N/A')], default="na")
+    alerta = fields.Selection(string="Alerta",selection=[('DV','DV'),('DR','DR'),('N/A','N/A')], default="N/A")
     @api.depends('buffer_size','qty_transit','qty_available')
     def _compute_bp_transito(self):
        for record in self:
@@ -71,27 +71,35 @@ class MtaProducto(models.Model):
         
     def daily(self):
         productos = self.env['mta.producto'].search([('buffer_size','!=',0)])
+        
         for producto in productos:
-            producto.contador_v = (producto.qty_available-2*producto.buffer_size/3)/(producto.buffer_size/3)
-            producto.contador_r = 1-(producto.qty_available)/(producto.buffer_size/3)
+            contador = False
+            product = self.env['mta.producto'].browse(producto['id'])
+            product.contador_v = (product.qty_available-2*product.buffer_size/3)/(product.buffer_size/3)
+            product.contador_r = 1-(producto.qty_available)/(producto.buffer_size/3)
                 
-            if(producto.contador_v>=producto.dbm_v):
-                producto.alerta = 'dv'
-            if(producto.contador_r>=producto.dbm_r):
-                producto.alerta = 'dr'
+            if(product.contador_v>=product.dbm_v):
+                product.alerta = 'DV'
+                contador = True
+            if(product.contador_r>=product.dbm_r):
+                product.alerta = 'DR'
+                contador = True
+            if( not contador):
+                product.alerta = 'N/A'
             
-            if (producto.alerta == 'dv'):
-                if(producto.buffer_changes):
+            
+            if (product.alerta == 'DV'):
+                if(product.buffer_changes):
                     now = datetime.now()
-                    last_buffer_size_update = producto.buffer_changes[len(producto.buffer_changes)-1].create_date
+                    last_buffer_size_update = product.buffer_changes[len(product.buffer_changes)-1].create_date
                     delta_time = now - last_buffer_size_update
-                    if(delta_time.days>producto.lt and producto.lt!=0):
-                        producto.recomendacion = 'dbs'
+                    if(delta_time.days>product.lt and product.lt!=0):
+                        product.recomendacion = 'dbs'
                 
-            if (producto.alerta == 'dr'):
-                if(producto.buffer_changes):
+            if (product.alerta == 'DR'):
+                if(product.buffer_changes):
                     now = datetime.now()
-                    last_buffer_size_update = producto.buffer_changes[len(producto.buffer_changes)-1].create_date
+                    last_buffer_size_update = product.buffer_changes[len(product.buffer_changes)-1].create_date
                     delta_time = now - last_buffer_size_update
-                    if(delta_time.days>producto.lt and producto.lt!=0):
-                        producto.recomendacion = 'ibs'
+                    if(delta_time.days>product.lt and product.lt!=0):
+                        product.recomendacion = 'ibs'

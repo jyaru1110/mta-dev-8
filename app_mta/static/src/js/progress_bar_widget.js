@@ -11,8 +11,15 @@ var ProgressBarWidget = AbstractField.extend({
     },
     _render: function() {
         var self = this;
+        var bandera_alerta = false;
         var value = this.value;
-        this.$('.background').text(value + "%");
+        if(value!='DV' && value!='DR' && value!="N/A"){
+            this.$('.background').text(value + "%");
+        }else{
+            this.$('.background').text(value);
+            this.$('.background').css('padding','50% 100%');
+            bandera_alerta = true;
+        }
         
         var value = this.value.toString();
         if(value.length == 4){
@@ -24,7 +31,7 @@ var ProgressBarWidget = AbstractField.extend({
                 if(value.length==3){
                     this.$('.background').css('padding','10% 34.6%');
                 }else{
-                    if(value.length==2){
+                    if(value.length==2 && !bandera_alerta){
                         this.$('.background').css('padding','10% 38%');
                     }else{
                         if(value.length==6){
@@ -35,7 +42,7 @@ var ProgressBarWidget = AbstractField.extend({
             }
         }
         
-        if(value<=33 || value=='dv'){
+        if(value<=33 || value=='DV'){
             this.$('.background').css('background-color','#35C855');
             
         }else{
@@ -43,7 +50,7 @@ var ProgressBarWidget = AbstractField.extend({
                 this.$('.background').css('background-color','#EBC232');
                  
             }else{
-                if(value=='dr' || value>66){
+                if(value=='DR' || value>66){
                     this.$('.background').css('background-color','#F14040');
                 }
             }
