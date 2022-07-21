@@ -36,6 +36,17 @@ class MtaProducto(models.Model):
     bp_sitio = fields.Integer(string="%BP en sitio",
                                compute='_compute_bp_sitio')
     alerta = fields.Selection(string="Alerta",selection=[('DV','DV'),('DR','DR'),('N/A','N/A')], default="N/A")
+    
+    @api.model
+    def create(self,values):
+        if 'qty_available' in values:
+            if(values['qty_available']>=2*self.buffer_size/3):
+                values['estado'] = 1
+            elif(values['qty_available']>=values['buffer_size']/3):
+                values['estado'] = 2
+            else:
+                values['estado'] = 3
+        
     @api.depends('buffer_size','qty_transit','qty_available')
     def _compute_bp_transito(self):
        for record in self:
@@ -75,8 +86,10 @@ class MtaProducto(models.Model):
         for producto in productos:
             contador = False
             product = self.env['mta.producto'].browse(producto['id'])
-            product.contador_v = (product.qty_available-2*product.buffer_size/3)/(product.buffer_size/3)
-            product.contador_r = 1-(producto.qty_available)/(producto.buffer_size/3)
+            if producto.estado == 1:
+                product.contador_v =product.contador_v + (product.qty_available-2*product.buffer_size/3)/(product.buffer_size/3)
+            elif producto.estado == 3:
+                product.contador_r =product.contador_r + 1-(producto.qty_available)/(producto.buffer_size/3)
                 
             if(product.contador_v>=product.dbm_v):
                 product.alerta = 'DV'

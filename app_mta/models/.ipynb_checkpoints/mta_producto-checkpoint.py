@@ -75,8 +75,10 @@ class MtaProducto(models.Model):
         for producto in productos:
             contador = False
             product = self.env['mta.producto'].browse(producto['id'])
-            product.contador_v = (product.qty_available-2*product.buffer_size/3)/(product.buffer_size/3)
-            product.contador_r = 1-(producto.qty_available)/(producto.buffer_size/3)
+            if producto.estado == 1:
+                product.contador_v =product.contador_v + (product.qty_available-2*product.buffer_size/3)/(product.buffer_size/3)
+            elif producto.estado == 3:
+                product.contador_r =product.contador_r + 1-(producto.qty_available)/(producto.buffer_size/3)
                 
             if(product.contador_v>=product.dbm_v):
                 product.alerta = 'DV'
