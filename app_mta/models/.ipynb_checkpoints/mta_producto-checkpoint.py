@@ -36,6 +36,19 @@ class MtaProducto(models.Model):
     bp_sitio = fields.Integer(string="%BP en sitio",
                                compute='_compute_bp_sitio')
     alerta = fields.Selection(string="Alerta",selection=[('DV','DV'),('DR','DR'),('N/A','N/A')], default="N/A")
+    
+    @api.model
+    def create(self,values):
+        if 'qty_available' in values:
+            if(values['qty_available']>=2*self.buffer_size/3):
+                values['estado'] = 1
+            elif(values['qty_available']>=values['buffer_size']/3):
+                values['estado'] = 2
+            else:
+                values['estado'] = 3
+        override_create = super(ProductProduct,self).create(values)
+        return override_create
+        
     @api.depends('buffer_size','qty_transit','qty_available')
     def _compute_bp_transito(self):
        for record in self:
