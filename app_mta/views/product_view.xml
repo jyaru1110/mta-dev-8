@@ -18,8 +18,7 @@
                     <field name="qty_available"/>
                     <field name="bp_sitio" widget="progress_bar_widget"/>
                     <field name="alerta" widget="progress_bar_widget"/>
-                    <field name="contador_v"/>
-                    <field name="contador_r"/>
+                    <field name="recomendacion"/>
                 </tree>
             </field>
         </record>
@@ -28,10 +27,7 @@
             <field name="model">mta.producto</field>
             <field name="arch" type="xml">
                 <form string="TEST">
-                    <group>
-                        <field name="buffer_size" widget="chart_widget"/>
-                        <field name="product_tmpl_id"/>
-                    </group>
+                    <field name="buffer_size" widget="chart_widget"/>
                 </form>
             </field>
         </record>
