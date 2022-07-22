@@ -1,7 +1,7 @@
 /** @odoo-module **/
 import AbstractField from 'web.AbstractField';
 import fieldRegistry from 'web.field_registry';
-var ProgressBarWidget = AbstractField.extend({
+var ChartWidget = AbstractField.extend({
     template: "ChartWidget",
     start: function(){
         this._super.apply(this, arguments);
