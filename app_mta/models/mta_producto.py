@@ -46,7 +46,7 @@ class MtaProducto(models.Model):
                 values['estado'] = 2
             else:
                 values['estado'] = 3
-        override_create = super(ProductProduct,self).create(values)
+        override_create = super(MtaProducto,self).create(values)
         return override_create
         
     @api.depends('buffer_size','qty_transit','qty_available')
