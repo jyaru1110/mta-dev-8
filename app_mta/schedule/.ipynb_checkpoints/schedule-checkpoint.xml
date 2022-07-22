@@ -3,8 +3,8 @@
     <record id="incrementar_contadores" model="ir.cron">
         <field name="name">Incrementar contadores</field>
         <field name="user_id" ref="base.user_root" />
-        <field name="interval_number">5</field>
-        <field name="interval_type">minutes</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="doall">0</field>
         <field name="model_id" ref="model_mta_producto"/>
