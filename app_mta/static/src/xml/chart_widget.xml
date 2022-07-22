@@ -1,7 +1,7 @@
 <templates id="template" xml:space="preserve">
     <t t-name="ChartWidget">
         <div class="contenedor">
-            <canvas class="canvas"></canvas>
+            <canvas id="canvas"></canvas>
         </div>
     </t>
 </templates>
