@@ -79,6 +79,7 @@ class MtaProducto(models.Model):
                 values['contador_v'] = 0
                 values['contador_r'] = 0
         override_write = super(MtaProducto,self).write(values)
+        return override_write
         
         
         

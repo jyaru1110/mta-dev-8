@@ -12,8 +12,8 @@ var ChartWidget = AbstractField.extend({
     _render: function() {
         var self = this;
         var value = this.value;
-        var canvas = this.$('#canvas')[0]
-        var ctx = canvas.getContext("2d");
+        //var canvas = this.$('#canvas')[0]
+        //var ctx = canvas.getContext("2d");
         
     },
 })
