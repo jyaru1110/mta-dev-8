@@ -27,7 +27,7 @@
             <field name="model">mta.producto</field>
             <field name="arch" type="xml">
                 <form string="TEST">
-                    <field name="buffer_changes" widget="chart_widget"/>
+                    <field name="id" widget="chart_widget"/>
                 </form>
             </field>
         </record>

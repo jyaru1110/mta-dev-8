@@ -7,15 +7,15 @@ class MtaProducto(models.Model):
     _name = 'mta.producto'
     _description = 'Product MTA'
    
-    buffer_changes = fields.One2many(comodel_name='buffer.time',
-                                  inverse_name = 'product_id',
-                                  string = 'Cambios en buffer')
+    #buffer_changes = fields.One2many(comodel_name='buffer.time',
+     #                             inverse_name = 'product_id',
+      #                            string = 'Cambios en buffer')
     #product.template relation:
     product_tmpl_id = fields.Many2one('product.product', 'Product Product', required=True, ondelete='cascade')
     #mta monitoring
-    be_mta_mon = fields.Boolean(string='Es monitoreado por MTA', default=True)
-    dbm_v = fields.Integer(string="Condicion demasiado verde",default=5)
-    dbm_r = fields.Integer(string="Condicion demasiado rojo",default=1)
+    #be_mta_mon = fields.Boolean(string='Es monitoreado por MTA', default=True)
+    #dbm_v = fields.Integer(string="Condicion demasiado verde",default=5)
+    #dbm_r = fields.Integer(string="Condicion demasiado rojo",default=1)
     contador_v = fields.Integer(string="Contador de verde")
     contador_r = fields.Integer(string="Contador de rojo")
     estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo")
@@ -23,11 +23,11 @@ class MtaProducto(models.Model):
     #graficos:
     #cont
     #attributes
-    lt = fields.Integer(string='Tiempo de respuesta del proveedor')
-    loteOptimo = fields.Integer(string='Lote óptimo')
+    #lt = fields.Integer(string='Tiempo de respuesta del proveedor')
+    #loteOptimo = fields.Integer(string='Lote óptimo')
     #qty_sitio = fields.Integer(string='# sitio')
-    qty_transit = fields.Integer(string='# transito')
-    buffer_size = fields.Integer(string="Buffer Size",default=1)
+    #qty_transit = fields.Integer(string='# transito')
+    #buffer_size = fields.Integer(string="Buffer Size",default=1)
     oc = fields.Integer(string="# OC", default=0)
     bp_solicitud = fields.Integer(string="%BP en solicitadas",
                                 compute='_compute_bp_solicitud')
@@ -78,7 +78,9 @@ class MtaProducto(models.Model):
             if(actual_estado != values['estado'] and values['estado']==2):
                 values['contador_v'] = 0
                 values['contador_r'] = 0
+        print('ola si entre aki jeje')
         override_write = super(MtaProducto,self).write(values)
+        return override_write
         
         
         

@@ -7,7 +7,7 @@ class Controller(http.Controller):
     @http.route(['/get_buffer_changes'],type='json',auth='public',website=True)
     
     def get_products(self,**kw):
-        buffer_changes = http.request.env['mta.producto'].sudo().search([],limit=5)
+        buffer_changes = http.request.env['buffer.time'].sudo().search([('product_id','=',1)])
         
         bc = []
         

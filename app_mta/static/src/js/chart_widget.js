@@ -9,18 +9,21 @@ var ChartWidget = AbstractField.extend({
             this.value = this.recordData[this.nodeOptions.currentValue]
         }
     },
-    _render: function(require) {
-        var ajax = require('web.ajax');
-        var result = [];
-        ajax.jsonRpc("/get_buffer_changes", 'call', {}, {
-            'async': false
-        }).then(function (data) {
-            result.push(data);
-        });
-        console.log(result)
+    _render: function() {
         var self = this;
         var value = this.value;
         console.log(value)
+        var ajax = require('web.ajax');
+        var result = [];
+        var enlace = "/get_buffer_changes?product_id="+value.toString();
+        ajax.jsonRpc(enlace, 'call', {}, {
+            'async': false
+        }).then(function (data) {
+            result.push(data);
+            result.foreach(element=>{
+                console.log(element)
+            })
+        });
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
         const myChart = new Chart(ctx, {
