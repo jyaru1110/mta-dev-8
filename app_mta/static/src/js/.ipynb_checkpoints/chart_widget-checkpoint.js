@@ -9,7 +9,15 @@ var ChartWidget = AbstractField.extend({
             this.value = this.recordData[this.nodeOptions.currentValue]
         }
     },
-    _render: function() {
+    _render: function(require) {
+        var ajax = require('web.ajax');
+        var result = [];
+        ajax.jsonRpc("/get_buffer_changes", 'call', {}, {
+            'async': false
+        }).then(function (data) {
+            result.push(data);
+        });
+        console.log(result)
         var self = this;
         var value = this.value;
         console.log(value)
@@ -18,28 +26,15 @@ var ChartWidget = AbstractField.extend({
         const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Jan', 'Feb', 'March', 'June', 'July', 'August'],
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Oranges'],
         datasets: [{
-            label: 'Date',
             fill:true,
+            label: '# of Votes',
             data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+            backgroundColor:'rgba(78,115,223,0.4)',
+            borderColor:'rgba(78, 115, 223, 1)',
+            tension: 0.1
+            //borderWidth: 1
         }]
     },
     options: {
