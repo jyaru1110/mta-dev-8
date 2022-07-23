@@ -17,11 +17,11 @@ var ProgressBarWidget = AbstractField.extend({
             this.$('.background').text(value + "%");
         }else{
             this.$('.background').text(value);
-            this.$('.background').css('padding','50% 100%');
+            //this.$('.background').css('padding','50% 100%');
             bandera_alerta = true;
         }
         
-        var value = this.value.toString();
+        /*var value = this.value.toString();
         if(value.length == 4){
             this.$('.background').css('padding','10% 33%');
         }else{
@@ -40,8 +40,7 @@ var ProgressBarWidget = AbstractField.extend({
                     }
                 }
             }
-        }
-        
+        }*/
         if(value<=33 || value=='DV'){
             this.$('.background').css('background-color','#35C855');
             

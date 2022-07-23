@@ -20,7 +20,8 @@
         'web.assets_backend': [
             ('prepend','/app_mta/static/src/css/progress_bar_widget.css'),
             '/app_mta/static/src/js/progress_bar_widget.js',
-            '/app_mta/static/src/js/chart_widget.js'
+            '/app_mta/static/src/js/chart_widget.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js'
         ],
         'web.assets_qweb': [
             '/app_mta/static/src/xml/progress_bar_widget.xml',

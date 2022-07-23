@@ -1,4 +1,18 @@
 .background{
-    /*padding: 10% 30%;*/
     color:white;
+    width: 100%!important;
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+    padding: inherit;
+}
+.contenedor{
+    padding:inherit;
+}
+.o_progress_bar_widget_cell{
+    position:relative!important;
+}
+.canvas{
+    height:500px!important;
+    width:1000px!important;
 }
