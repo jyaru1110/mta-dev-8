@@ -4,10 +4,10 @@ from odoo import http
 from odoo.http import request
 
 class Controller(http.Controller):
-    @http.route(['/get_buffer_changes'],type='json',auth='public',website=True)
+    @http.route(['/get_buffer_changes/<int:product_id>'],type='json',auth='public',website=True)
     
-    def get_products(self,**kw):
-        buffer_changes = http.request.env['buffer.time'].sudo().search([('product_id','=',1)])
+    def get_products(self,product_id):
+        buffer_changes = http.request.env['buffer.time'].sudo().search([('product_id','=',product_id)])
         
         bc = []
         

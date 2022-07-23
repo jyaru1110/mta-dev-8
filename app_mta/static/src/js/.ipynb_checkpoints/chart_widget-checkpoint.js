@@ -15,15 +15,17 @@ var ChartWidget = AbstractField.extend({
         console.log(value)
         var ajax = require('web.ajax');
         var result = [];
-        var enlace = "/get_buffer_changes?product_id="+value.toString();
+        var enlace = "/get_buffer_changes/"+value.toString();
+        console.log(enlace)
         ajax.jsonRpc(enlace, 'call', {}, {
             'async': false
         }).then(function (data) {
             result.push(data);
-            result.foreach(element=>{
+            /*result.foreach(element=>{
                 console.log(element)
-            })
+            })*/
         });
+        console.log(result)
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
         const myChart = new Chart(ctx, {
