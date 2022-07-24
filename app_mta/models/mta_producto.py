@@ -80,7 +80,7 @@ class MtaProducto(models.Model):
             if(actual_estado != values['estado'] and values['estado']==2):
                 values['contador_v'] = 0
                 values['contador_r'] = 0
-        print('ola si entre aki jeje')
+        print('ola si entre aki jejeJEJEJEJ')
         override_write = super(MtaProducto,self).write(values)
         return override_write
         
