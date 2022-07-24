@@ -46,6 +46,8 @@ class MtaProducto(models.Model):
                 values['estado'] = 2
             else:
                 values['estado'] = 3
+        if 'buffer_size' in values:
+            self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
         override_create = super(MtaProducto,self).create(values)
         return override_create
         

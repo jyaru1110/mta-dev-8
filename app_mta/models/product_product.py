@@ -20,25 +20,27 @@ class ProductProduct(models.Model):
         self.env['mta.producto'].create({'product_tmpl_id':override_create.id})
         return override_create
     
-    #def write(self,values):
+    def write(self,values):
         # your logic goes here
         override_write = super(ProductProduct,self).write(values)
         producto = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
         if(producto):
-            if 'dbm_v' in values:
-                producto.dbm_v = values['dbm_v']
-            if 'dbm_r' in values:
-                producto.dbm_r = values['dbm_r']
-            if 'be_mta_mon' in values:
-                producto.be_mta_mon = values['be_mta_mon']
-            if 'lt' in values:
-                producto.lt = values['lt']
-            if 'loteOptimo' in values:
-                producto.loteOptimo = values['loteOptimo']
-            if 'qty_transit' in values:
-               producto.qty_transit = values['qty_transit']
-            if 'buffer_size' in values:
-                producto.buffer_size = values['buffer_size']
-            if 'qty_available' in values:
-                producto.qty_available = values['qty_available']
-            return override_write
+            #if 'dbm_v' in values:
+             #   producto.dbm_v = values['dbm_v']
+            #if 'dbm_r' in values:
+            #    producto.dbm_r = values['dbm_r']
+            #if 'be_mta_mon' in values:
+            #    producto.be_mta_mon = values['be_mta_mon']
+            #if 'lt' in values:
+           #     producto.lt = values['lt']
+            #if 'loteOptimo' in values:
+             #   producto.loteOptimo = values['loteOptimo']
+            #if 'qty_transit' in values:
+             #  producto.qty_transit = values['qty_transit']
+            #if 'buffer_size' in values:
+             #   producto.buffer_size = values['buffer_size']
+            #if 'qty_available' in values:
+             #   producto.qty_available = values['qty_available']
+            print('ola entra aki pero producto producto')
+            producto.write(values)
+        return override_write
