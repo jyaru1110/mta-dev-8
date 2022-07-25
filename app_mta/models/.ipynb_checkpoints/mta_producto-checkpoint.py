@@ -69,12 +69,13 @@ class MtaProducto(models.Model):
     #def write(self,values):
         #actual_buffer_size = self._origin.buffer_size
      #   actual_estado = self._origin.estado
+        #print('write mta producto')
         #if 'buffer_size' in values:
          #   if(values['buffer_size']!=actual_buffer_size):
           #      print("sí setee contadores a 0 jiji")
            #     values['contador_v'] = 0
-            #    values['contador_r'] = 0
-             #   self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
+           #     values['contador_r'] = 0
+            #    self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
       #  if 'qty_available' in values:
          #   if(values['qty_available']>=2*self.buffer_size/3):
           #      values['estado'] = 1

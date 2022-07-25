@@ -31,7 +31,8 @@ class ProductProduct(models.Model):
                 print("sí setee contadores a 0 jiji")
                 values['contador_v'] = 0
                 values['contador_r'] = 0
-                self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
+                producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
+                self.env['buffer.time'].create({'product_id':producto_mta.id,'buffer_size':values['buffer_size']})
         override_write = super(ProductProduct,self).write(values)
        # producto = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
        # if(producto):
