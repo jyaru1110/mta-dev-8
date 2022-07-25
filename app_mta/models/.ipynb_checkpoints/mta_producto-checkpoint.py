@@ -18,7 +18,7 @@ class MtaProducto(models.Model):
     #dbm_r = fields.Integer(string="Condicion demasiado rojo",default=1)
     contador_v = fields.Integer(string="Contador de verde")
     contador_r = fields.Integer(string="Contador de rojo")
-    estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo")
+    estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo", compute='_compute_estado')
     recomendacion = fields.Selection(string="Recomendación", selection=[('ibs','Incrementar buffer size'),('dbs','Reducir buffer_size')])
     #graficos:
     #cont
@@ -39,19 +39,11 @@ class MtaProducto(models.Model):
     
     @api.model
     def create(self,values):
-        if 'qty_available' in values:
-            if(values['qty_available']>=2*self.buffer_size/3):
-                values['estado'] = 1
-            elif(values['qty_available']>=values['buffer_size']/3):
-                values['estado'] = 2
-            else:
-                values['estado'] = 3
-        if 'buffer_size' in values:
-            self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
         override_create = super(MtaProducto,self).create(values)
+        self.env['buffer.time'].create({'product_id':override_create.id,'buffer_size':override_create.buffer_size})
         return override_create
         
-    @api.depends('buffer_size','qty_transit','qty_available')
+    @api.depends('buffer_size','qty_transit','qty_available', 'estado')
     def _compute_bp_transito(self):
        for record in self:
             record.bp_transito = ((record.buffer_size-record.qty_available-record.qty_transit)/(record.buffer_size))*100
@@ -61,22 +53,32 @@ class MtaProducto(models.Model):
     def _compute_bp_sitio(self):
         for record in self:
             record.bp_sitio = ((record.buffer_size-record.qty_available)/(record.buffer_size))*100
+    def _compute_estado(self):
+        for record in self:
+            if(record.qty_available>=2*record.buffer_size/3):
+                record.estado = 1
+            elif record.qty_available >=record.buffer_size/3:
+                record.estado = 2
+            else:
+                record.estado = 3
     
     def write(self,values):
         actual_buffer_size = self._origin.buffer_size
         actual_estado = self._origin.estado
         if 'buffer_size' in values:
             if(values['buffer_size']!=actual_buffer_size):
+                print("sí setee contadores a 0 jiji")
                 values['contador_v'] = 0
                 values['contador_r'] = 0
                 self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
-        if 'qty_available' in values:
-            if(values['qty_available']>=2*self.buffer_size/3):
-                values['estado'] = 1
-            elif(values['qty_available']>=values['buffer_size']/3):
-                values['estado'] = 2
-            else:
-                values['estado'] = 3
+        #if 'qty_available' in values:
+         #   if(values['qty_available']>=2*self.buffer_size/3):
+          #      values['estado'] = 1
+           # elif(values['qty_available']>=values['buffer_size']/3):
+            #    values['estado'] = 2
+            #else:
+             #   values['estado'] = 3
+        if 'estado' in values:
             if(actual_estado != values['estado'] and values['estado']==2):
                 values['contador_v'] = 0
                 values['contador_r'] = 0
