@@ -10,6 +10,8 @@ class ProductProduct(models.Model):
     loteOptimo = fields.Integer(string="Lote óptimo")
     qty_transit = fields.Integer(string="# transito")
     buffer_size = fields.Integer(string="Buffer Size",default=1)
+    contador_v = fields.Integer(string="Contador de verde")
+    contador_r = fields.Integer(string="Contador de rojo")
     
     @api.model
     def create(self,values):
@@ -23,6 +25,13 @@ class ProductProduct(models.Model):
     def write(self,values):
         # your logic goes here
         print('aki si entre jiji')
+        actual_buffer_size = self._origin.buffer_size
+        if 'buffer_size' in values:
+            if(values['buffer_size']!=actual_buffer_size):
+                print("sí setee contadores a 0 jiji")
+                values['contador_v'] = 0
+                values['contador_r'] = 0
+                self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
         override_write = super(ProductProduct,self).write(values)
        # producto = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
        # if(producto):
