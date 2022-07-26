@@ -13,7 +13,7 @@ var ChartWidget = AbstractField.extend({
         var self = this;
         var value = this.value;
         var ajax = require('web.ajax');
-        var result = [];
+         var timeFormat = 'DD/MM/YYYY';
         var labels = [];
         var data_v =[];
         var data_a =[];
@@ -53,7 +53,7 @@ var ChartWidget = AbstractField.extend({
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: labels,
+                        //labels: labels,
                         datasets:[
                         {
                             fill:true,
@@ -89,7 +89,9 @@ var ChartWidget = AbstractField.extend({
                                 time: {
                                     displayFormats: {
                                         quarter: 'MMM YYYY'
-                                    }
+                                    },
+                                    format: timeFormat,
+                                    tooltipFormat: 'll'
                                 },
                                 title: {
                                     display: true,
