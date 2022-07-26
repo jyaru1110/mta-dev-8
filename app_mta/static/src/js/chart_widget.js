@@ -19,17 +19,22 @@ var ChartWidget = AbstractField.extend({
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
         var enlace = "/get_buffer_changes/"+value.toString();
+        console.log('test con for en vez de forEach')
         ajax.jsonRpc(enlace, 'call', {}, {
             'async': false
         }).then(function (data) {
             result.push(data);
-            result[0].forEach(element=>{
+            /*result[0].forEach(element=>{
                 //console.log(typeof(element.create_date))
                 //data_c.push({x:element.create_date,y:element.buffer_size})
                 labels.push(element.create_date);
                 data_c.push(element.buffer_size);
                 
-            })
+            })*/
+            for(var i =0; i<result[0].length; i++){
+                labels.push(result[0][i].create_date);
+                data_c.push(result[0][i].buffer_size);
+            }
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -48,7 +53,7 @@ var ChartWidget = AbstractField.extend({
                     scales: {
                         y: {
                             beginAtZero: true
-                        }
+                        },
                     }
                 }
             });
