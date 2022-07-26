@@ -14,8 +14,9 @@ var ChartWidget = AbstractField.extend({
         var value = this.value;
         var ajax = require('web.ajax');
         var result = [];
-        var labels = []
-        var data_c =[]
+        var labels = [];
+        var data_c =[];
+        var data_completa = {};
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
         var enlace = "/get_buffer_changes/"+value.toString();
@@ -34,7 +35,18 @@ var ChartWidget = AbstractField.extend({
             for(var i =0; i<result[0].length; i++){
                 labels.push(result[0][i].create_date);
                 data_c.push(result[0][i].buffer_size);
+                data_completa.push({
+                    labels:[result[0][i].create_date,result[0][i+1].create_date],
+                    datasets:[{
+                        fill:true,
+                        label:'Buffer size',
+                        data:[result[0][i].buffer_size,result[0][i].buffer_size],
+                        backgroundColor:'rgba(53,200,85,0.2)',
+                        borderColor:'rgba(53,200,85,1)',
+                    }]
+                })
             }
+            console.log(data_completa)
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
