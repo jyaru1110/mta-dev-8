@@ -15,8 +15,10 @@ var ChartWidget = AbstractField.extend({
         var ajax = require('web.ajax');
         var result = [];
         var labels = [];
-        var data_c =[];
-        var data_completa = {};
+        var data_v =[];
+        var data_a =[];
+        var data_r = [];
+        //var data_completa = [];
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
         var enlace = "/get_buffer_changes/"+value.toString();
@@ -24,50 +26,92 @@ var ChartWidget = AbstractField.extend({
         ajax.jsonRpc(enlace, 'call', {}, {
             'async': false
         }).then(function (data) {
-            result.push(data);
-            /*result[0].forEach(element=>{
+            //result.push(data);
+            data.forEach(element=>{
                 //console.log(typeof(element.create_date))
                 //data_c.push({x:element.create_date,y:element.buffer_size})
-                labels.push(element.create_date);
-                data_c.push(element.buffer_size);
+                //labels.push(element.create_date);
+                data_v.push({x:element.create_date,y:element.buffer_size});
+                data_a.push({x:element.create_date,y:2*element.buffer_size/3});
+                data_r.push({x:element.create_date,y:element.buffer_size/3});
                 
-            })*/
-            for(var i =0; i<result[0].length; i++){
+            })
+            //labels.push(date)
+            /*for(var i =0; i<result[0].length-1; i++){
                 labels.push(result[0][i].create_date);
-                data_c.push(result[0][i].buffer_size);
+                //data_c.push(result[0][i].buffer_size);
+                console.log(result[0][i].create_date,result[0][i+1].create_date);
                 data_completa.push({
-                    labels:[result[0][i].create_date,result[0][i+1].create_date],
-                    datasets:[{
                         fill:true,
                         label:'Buffer size',
-                        data:[result[0][i].buffer_size,result[0][i].buffer_size],
+                        data:[{x:result[0][i].create_date,y:result[0][i].buffer_size},{x:result[0][i+1].create_date,y:result[0][i].buffer_size}],
                         backgroundColor:'rgba(53,200,85,0.2)',
                         borderColor:'rgba(53,200,85,1)',
-                    }]
                 })
             }
-            console.log(data_completa)
+            console.log(data_completa)*/
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: labels,
-                        datasets: [{
+                        datasets:[
+                        {
                             fill:true,
-                            label: 'Buffer size',
-                            data: data_c,
-                            backgroundColor:'rgba(78,115,223,0.4)',
-                            borderColor:'rgba(78, 115, 223, 1)',
-                            tension: 0.1
-            //borderWidth: 1
-                        }]
-                    },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                            data:data_r,
+                            stepped: true,
+                            backgroundColor:'rgba(241,64,64,1)',
+                            borderColor:'rgba(181,49,19,1)',
                         },
+                        {
+                            fill:true,
+                            data:data_a,
+                            stepped: true,
+                            backgroundColor:'rgba(235,194,50,1)',
+                            borderColor:'rgba(189,156,39,1)',
+                        },
+                        {
+                            label:'Buffer size',
+                            fill:true,
+                            data:data_v,
+                            stepped: true,
+                            backgroundColor:'rgba(53,200,85,1)',
+                            borderColor:'rgba(38,148,82,1)',
+                        },
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            },
+                            x: {
+                                type: 'time',
+                                time: {
+                                    displayFormats: {
+                                        quarter: 'MMM YYYY'
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Date'
+                                }
+                            },
+                            
+                        },
+                        plugins:{
+                           legend: {
+                                display: false
+                           },
+                            title: {
+                                display: true,
+                                text: 'Comportamiento historico del buffer'
+                            },
+                        },
+                        tooltips: {
+                            mode: 'nearest',
+                            intersect: false
+                        }
                     }
-                }
             });
         });
         //console.log(labels)
