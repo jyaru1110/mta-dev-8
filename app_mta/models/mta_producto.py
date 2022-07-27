@@ -41,7 +41,7 @@ class MtaProducto(models.Model):
     def create(self,values):
         override_create = super(MtaProducto,self).create(values)
         self.env['changes.time'].create({'product_id':override_create.id,'buffer_size':override_create.buffer_size,'type':'buffer'})
-        self.env['changes.time'].create({'product_id':override_create.id,'qty_available':override_create.buffer_size,'type':'available'})
+        self.env['changes.time'].create({'product_id':override_create.id,'qty_available':override_create.qty_available,'type':'available'})
         
         return override_create
         

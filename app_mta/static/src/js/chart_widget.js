@@ -32,14 +32,20 @@ var ChartWidget = AbstractField.extend({
                 //console.log(typeof(element.create_date))
                 //data_c.push({x:element.create_date,y:element.buffer_size})
                 //labels.push(element.create_date);
+                
                 const date = new Date(element.create_date);
+                console.log(date.toUTCString())
+                console.log(date)
                 if(element.type=='buffer'){
-                    data_v.push({x:date.toUTCString(),y:element.buffer_size});
+                    /*data_v.push({x:date.toUTCString(),y:element.buffer_size});
                     data_a.push({x:date.toUTCString(),y:2*element.buffer_size/3});
-                    data_r.push({x:date.toUTCString(),y:element.buffer_size/3});
+                    data_r.push({x:date.toUTCString(),y:element.buffer_size/3});*/
+                    data_v.push({x:element.create_date,y:element.buffer_size});
+                    data_a.push({x:element.create_date,y:2*element.buffer_size/3});
+                    data_r.push({x:element.create_date,y:element.buffer_size/3});
                 }else{
                     if(element.type=='available'){
-                        data_q.push({x:date.toUTCString(),y:element.qty_available})
+                        data_q.push({x:element.create_date,y:element.qty_available})
                     }
                 }
                 
@@ -66,6 +72,7 @@ var ChartWidget = AbstractField.extend({
                         datasets:[
                         {
                             //fill:true,
+                            label:'Quantity On Hand',
                             data:data_q,
                             stepped: true,
                             borderColor:'rgba(198,108,241,1)',
