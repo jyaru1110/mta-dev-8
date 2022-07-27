@@ -2,4 +2,4 @@
 from . import mta_producto
 from . import stock_move
 from . import product_product
-from . import buffer_time
+from . import changes_time

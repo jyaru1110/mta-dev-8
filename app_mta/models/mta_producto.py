@@ -7,9 +7,9 @@ class MtaProducto(models.Model):
     _name = 'mta.producto'
     _description = 'Product MTA'
    
-    buffer_changes = fields.One2many(comodel_name='buffer.time',
+    changes = fields.One2many(comodel_name='changes.time',
                                   inverse_name = 'product_id',
-                                  string = 'Cambios en buffer')
+                                  string = 'Cambios en buffer o qty available')
     #product.template relation:
     product_tmpl_id = fields.Many2one('product.product', 'Product Product', required=True, ondelete='cascade')
     #mta monitoring
@@ -40,7 +40,9 @@ class MtaProducto(models.Model):
     @api.model
     def create(self,values):
         override_create = super(MtaProducto,self).create(values)
-        self.env['buffer.time'].create({'product_id':override_create.id,'buffer_size':override_create.buffer_size})
+        self.env['changes.time'].create({'product_id':override_create.id,'buffer_size':override_create.buffer_size,'type':'buffer'})
+        self.env['changes.time'].create({'product_id':override_create.id,'qty_available':override_create.buffer_size,'type':'available'})
+        
         return override_create
         
     @api.depends('buffer_size','qty_transit','qty_available', 'estado', 'contador_v', 'contador_r')
@@ -101,8 +103,11 @@ class MtaProducto(models.Model):
             product = self.env['mta.producto'].browse(producto['id'])
             if producto.estado == 1:
                 product.contador_v =product.contador_v + (product.qty_available-2*product.buffer_size/3)/(product.buffer_size/3)
+                product.contador_r = 0
+                   
             elif producto.estado == 3:
                 product.contador_r =product.contador_r + 1-(producto.qty_available)/(producto.buffer_size/3)
+                product.contador_v = 0
                 
             if(product.contador_v>=product.dbm_v):
                 product.alerta = 'DV'

@@ -26,13 +26,18 @@ class ProductProduct(models.Model):
         # your logic goes here
         print('aki si entre jiji')
         actual_buffer_size = self._origin.buffer_size
+        actual_qty_available = self._origin.qty_available
         if 'buffer_size' in values:
             if(values['buffer_size']!=actual_buffer_size):
                 print("sí setee contadores a 0 jiji")
                 values['contador_v'] = 0
                 values['contador_r'] = 0
                 producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
-                self.env['buffer.time'].create({'product_id':producto_mta.id,'buffer_size':values['buffer_size']})
+                self.env['changes.time'].create({'product_id':producto_mta.id,'buffer_size':values['buffer_size'],'type':'buffer'})
+        if 'qty_available' in values:
+            if values['qty_availale']!=actual_qty_available:
+                self.env['changes.time'].create({'product_id':producto_mta.id,'qty_available':values['qty_available'],'type':'available'})
+    
         override_write = super(ProductProduct,self).write(values)
        # producto = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
        # if(producto):

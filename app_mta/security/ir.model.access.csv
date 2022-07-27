@@ -1,4 +1,4 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 mta_admin,mta admin,model_mta_producto,group_mta_admin,1,1,1,1
 all_access,all access,model_mta_producto,,1,1,1,1
-app_mta.access_buffer_time,access_buffer_time,app_mta.model_buffer_time,,1,1,1,1
+app_mta.access_chnages_time,access_changes_time,app_mta.model_changes_time,,1,1,1,1

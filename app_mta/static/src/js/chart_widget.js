@@ -13,11 +13,12 @@ var ChartWidget = AbstractField.extend({
         var self = this;
         var value = this.value;
         var ajax = require('web.ajax');
-         var timeFormat = 'DD/MM/YYYY';
+        var timeFormat = 'DD/MM/YYYY';
         var labels = [];
         var data_v =[];
         var data_a =[];
         var data_r = [];
+        var data_q = [];
         //var data_completa = [];
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
@@ -31,9 +32,17 @@ var ChartWidget = AbstractField.extend({
                 //console.log(typeof(element.create_date))
                 //data_c.push({x:element.create_date,y:element.buffer_size})
                 //labels.push(element.create_date);
-                data_v.push({x:element.create_date,y:element.buffer_size});
-                data_a.push({x:element.create_date,y:2*element.buffer_size/3});
-                data_r.push({x:element.create_date,y:element.buffer_size/3});
+                const date = new Date(element.create_date);
+                if(element.type=='buffer'){
+                    data_v.push({x:date.toUTCString(),y:element.buffer_size});
+                    data_a.push({x:date.toUTCString(),y:2*element.buffer_size/3});
+                    data_r.push({x:date.toUTCString(),y:element.buffer_size/3});
+                }else{
+                    if(element.type=='available'){
+                        data_q.push({x:date.toUTCString(),y:element.qty_available})
+                    }
+                }
+                
                 
             })
             //labels.push(date)
@@ -90,12 +99,10 @@ var ChartWidget = AbstractField.extend({
                                     displayFormats: {
                                         quarter: 'MMM YYYY'
                                     },
-                                    format: timeFormat,
-                                    tooltipFormat: 'll'
                                 },
                                 title: {
                                     display: true,
-                                    text: 'Date'
+                                    text: 'Fecha'
                                 }
                             },
                             
