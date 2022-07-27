@@ -65,6 +65,12 @@ var ChartWidget = AbstractField.extend({
                         //labels: labels,
                         datasets:[
                         {
+                            //fill:true,
+                            data:data_q,
+                            stepped: true,
+                            borderColor:'rgba(198,108,241,1)',
+                        },
+                        {
                             fill:true,
                             data:data_r,
                             stepped: true,
