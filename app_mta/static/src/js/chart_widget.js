@@ -77,6 +77,7 @@ var ChartWidget = AbstractField.extend({
                             data:data_q,
                             stepped: true,
                             borderColor:'rgba(198,108,241,1)',
+                            tension:0.1,
                         },
                         {
                             fill:true,

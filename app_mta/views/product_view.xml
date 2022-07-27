@@ -18,7 +18,6 @@
                     <field name="qty_available"/>
                     <field name="bp_sitio" widget="progress_bar_widget"/>
                     <field name="alerta" widget="progress_bar_widget"/>
-                    <field name="contador_v"/>
                     <field name="recomendacion"/>
                 </tree>
             </field>
@@ -30,6 +29,15 @@
                 <form string="TEST">
                     <field name="id" widget="chart_widget"/>
                 </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_mta_search">
+            <field name="name">producto.mta.search</field>
+            <field name="model">mta.producto</field>
+            <field name="arch" type="xml">
+                <search>
+                      <filter string="Monitoreado mta" name="mta_monitored" domain="[('be_mta_mon', '=', True)]"/>
+                </search>
             </field>
         </record>
     </data>

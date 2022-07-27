@@ -35,7 +35,9 @@ class ProductProduct(models.Model):
                 producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
                 self.env['changes.time'].create({'product_id':producto_mta.id,'buffer_size':values['buffer_size'],'type':'buffer'})
         if 'qty_available' in values:
-            if values['qty_availale']!=actual_qty_available:
+            if values['qty_available']!=actual_qty_available:
+                print('sí entro a crear changes in time')
+                producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
                 self.env['changes.time'].create({'product_id':producto_mta.id,'qty_available':values['qty_available'],'type':'available'})
     
         override_write = super(ProductProduct,self).write(values)
