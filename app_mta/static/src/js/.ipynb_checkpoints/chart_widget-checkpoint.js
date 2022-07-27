@@ -65,6 +65,7 @@ var ChartWidget = AbstractField.extend({
                 })
             }
             console.log(data_completa)*/
+            console.log('a')
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
