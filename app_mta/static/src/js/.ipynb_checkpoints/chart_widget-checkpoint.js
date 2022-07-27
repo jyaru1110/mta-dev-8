@@ -33,9 +33,9 @@ var ChartWidget = AbstractField.extend({
                 //data_c.push({x:element.create_date,y:element.buffer_size})
                 //labels.push(element.create_date);
                 
-                const date = new Date(element.create_date);
+                /*const date = new Date(element.create_date);
                 console.log(date.toUTCString())
-                console.log(date)
+                console.log(date)*/
                 if(element.type=='buffer'){
                     /*data_v.push({x:date.toUTCString(),y:element.buffer_size});
                     data_a.push({x:date.toUTCString(),y:2*element.buffer_size/3});
