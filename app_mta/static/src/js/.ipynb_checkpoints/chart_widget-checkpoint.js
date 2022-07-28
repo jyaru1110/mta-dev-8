@@ -14,7 +14,6 @@ var ChartWidget = AbstractField.extend({
         var value = this.value;
         var ajax = require('web.ajax');
         var timeFormat = 'DD/MM/YYYY';
-        var labels = [];
         var data_v =[];
         var data_a =[];
         var data_r = [];
@@ -36,10 +35,14 @@ var ChartWidget = AbstractField.extend({
                 /*const date = new Date(element.create_date);
                 console.log(date.toUTCString())
                 console.log(date)*/
+                
                 if(element.type=='buffer'){
                     /*data_v.push({x:date.toUTCString(),y:element.buffer_size});
                     data_a.push({x:date.toUTCString(),y:2*element.buffer_size/3});
                     data_r.push({x:date.toUTCString(),y:element.buffer_size/3});*/
+                    //const fecha = new Date(element.create_date);
+                    
+                    //console.log(fecha)
                     data_v.push({x:element.create_date,y:element.buffer_size});
                     data_a.push({x:element.create_date,y:2*element.buffer_size/3});
                     data_r.push({x:element.create_date,y:element.buffer_size/3});
@@ -51,21 +54,14 @@ var ChartWidget = AbstractField.extend({
                 
                 
             })
-            //labels.push(date)
-            /*for(var i =0; i<result[0].length-1; i++){
-                labels.push(result[0][i].create_date);
-                //data_c.push(result[0][i].buffer_size);
-                console.log(result[0][i].create_date,result[0][i+1].create_date);
-                data_completa.push({
-                        fill:true,
-                        label:'Buffer size',
-                        data:[{x:result[0][i].create_date,y:result[0][i].buffer_size},{x:result[0][i+1].create_date,y:result[0][i].buffer_size}],
-                        backgroundColor:'rgba(53,200,85,0.2)',
-                        borderColor:'rgba(53,200,85,1)',
-                })
-            }
-            console.log(data_completa)*/
-            console.log('b')
+            const tiempoTranscurrido = Date.now();
+            const hoy = new Date(tiempoTranscurrido);
+            console.log(hoy.toUTCString)
+            //console.log(data[data.length-1])
+            data_v.push({x:hoy.toUTCString(),y:data[data.length-1].buffer_size});
+            data_a.push({x:hoy.toUTCString(),y:2*data[data.length-1].buffer_size/3});
+            data_r.push({x:hoy.toUTCString(),y:data[data.length-1].buffer_size/3});
+            data_q.push({x:hoy.toUTCString(),y:data[data.length-1].qty_available});
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -75,7 +71,6 @@ var ChartWidget = AbstractField.extend({
                             //fill:true,
                             label:'Quantity On Hand',
                             data:data_q,
-                            stepped: true,
                             borderColor:'rgba(198,108,241,1)',
                             tension:0.1,
                         },
@@ -83,23 +78,23 @@ var ChartWidget = AbstractField.extend({
                             fill:true,
                             data:data_r,
                             stepped: true,
-                            backgroundColor:'rgba(241,64,64,1)',
-                            borderColor:'rgba(181,49,19,1)',
+                            backgroundColor:'rgba(241,64,64,0.4)',
+                            borderColor:'rgba(241,64,64,1)',
                         },
                         {
                             fill:true,
                             data:data_a,
                             stepped: true,
-                            backgroundColor:'rgba(235,194,50,1)',
-                            borderColor:'rgba(189,156,39,1)',
+                            backgroundColor:'rgba(235,194,50,0.4)',
+                            borderColor:'rgba(235,194,50,1)',
                         },
                         {
                             label:'Buffer size',
                             fill:true,
                             data:data_v,
                             stepped: true,
-                            backgroundColor:'rgba(53,200,85,1)',
-                            borderColor:'rgba(38,148,82,1)',
+                            backgroundColor:'rgba(53,200,85,0.4)',
+                            borderColor:'rgba(53,200,85,1)',
                         },
                         ]
                     },
