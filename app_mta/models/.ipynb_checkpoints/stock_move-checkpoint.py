@@ -11,4 +11,5 @@ class StockMove(models.Model):
             producto = self.env['mta.producto'].search([('product_tmpl_id','=',values['product_id'])])
             oc_actual = producto.oc
             producto.oc = oc_actual + values['product_uom_qty']
+            
         return override_create

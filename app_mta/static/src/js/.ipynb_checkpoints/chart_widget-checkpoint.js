@@ -18,50 +18,39 @@ var ChartWidget = AbstractField.extend({
         var data_a =[];
         var data_r = [];
         var data_q = [];
-        //var data_completa = [];
+        
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
         var enlace = "/get_buffer_changes/"+value.toString();
-        console.log('test con for en vez de forEach')
         ajax.jsonRpc(enlace, 'call', {}, {
             'async': false
         }).then(function (data) {
-            //result.push(data);
             data.forEach(element=>{
-                //console.log(typeof(element.create_date))
-                //data_c.push({x:element.create_date,y:element.buffer_size})
-                //labels.push(element.create_date);
-                
-                /*const date = new Date(element.create_date);
-                console.log(date.toUTCString())
-                console.log(date)*/
-                
+                //console.log(element)
+                const fecha = new Date(element.create_date);
                 if(element.type=='buffer'){
-                    /*data_v.push({x:date.toUTCString(),y:element.buffer_size});
-                    data_a.push({x:date.toUTCString(),y:2*element.buffer_size/3});
-                    data_r.push({x:date.toUTCString(),y:element.buffer_size/3});*/
-                    //const fecha = new Date(element.create_date);
-                    
-                    //console.log(fecha)
-                    data_v.push({x:element.create_date,y:element.buffer_size});
-                    data_a.push({x:element.create_date,y:2*element.buffer_size/3});
-                    data_r.push({x:element.create_date,y:element.buffer_size/3});
+                    data_v.push({x:fecha,y:element.buffer_size});
+                    data_a.push({x:fecha,y:2*element.buffer_size/3});
+                    data_r.push({x:fecha,y:element.buffer_size/3});
                 }else{
                     if(element.type=='available'){
-                        data_q.push({x:element.create_date,y:element.qty_available})
+                        data_q.push({x:fecha,y:element.qty_available})
                     }
                 }
-                
-                
             })
             const tiempoTranscurrido = Date.now();
             const hoy = new Date(tiempoTranscurrido);
-            console.log(hoy.toUTCString)
-            //console.log(data[data.length-1])
-            data_v.push({x:hoy.toUTCString(),y:data[data.length-1].buffer_size});
-            data_a.push({x:hoy.toUTCString(),y:2*data[data.length-1].buffer_size/3});
-            data_r.push({x:hoy.toUTCString(),y:data[data.length-1].buffer_size/3});
-            data_q.push({x:hoy.toUTCString(),y:data[data.length-1].qty_available});
+            //console.log(hoy)
+            /*console.log(hoy.toUTCString())*/
+            console.log(data[data.length-1])
+            data_v.push({x:hoy,y:data[data.length-1].buffer_size});
+            data_a.push({x:hoy,y:2*data[data.length-1].buffer_size/3});
+            data_r.push({x:hoy,y:data[data.length-1].buffer_size/3});
+            data_q.push({x:hoy,y:data[data.length-1].qty_available});
+            console.log(data_v)
+            console.log(data_a)
+            console.log(data_r)
+            console.log(data_q)
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -69,9 +58,10 @@ var ChartWidget = AbstractField.extend({
                         datasets:[
                         {
                             //fill:true,
+                            stepped: true,
                             label:'Quantity On Hand',
                             data:data_q,
-                            borderColor:'rgba(198,108,241,1)',
+                            borderColor:'black',
                             tension:0.1,
                         },
                         {
