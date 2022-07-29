@@ -26,7 +26,6 @@ var ChartWidget = AbstractField.extend({
             'async': false
         }).then(function (data) {
             data.forEach(element=>{
-                //console.log(element)
                 const fecha = new Date(element.create_date);
                 if(element.type=='buffer'){
                     data_v.push({x:fecha,y:element.buffer_size});
@@ -40,8 +39,6 @@ var ChartWidget = AbstractField.extend({
             })
             const tiempoTranscurrido = Date.now();
             const hoy = new Date(tiempoTranscurrido);
-            //console.log(hoy)
-            /*console.log(hoy.toUTCString())*/
             data_v.push({x:hoy,y:data[data.length-1].buffer_size});
             data_a.push({x:hoy,y:2*data[data.length-1].buffer_size/3});
             data_r.push({x:hoy,y:data[data.length-1].buffer_size/3});

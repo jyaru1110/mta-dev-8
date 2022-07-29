@@ -12,22 +12,10 @@ class MtaProducto(models.Model):
                                   string = 'Cambios en buffer o qty available')
     #product.template relation:
     product_tmpl_id = fields.Many2one('product.product', 'Product Product', required=True, ondelete='cascade')
-    #mta monitoring
-    #be_mta_mon = fields.Boolean(string='Es monitoreado por MTA', default=True)
-    #dbm_v = fields.Integer(string="Condicion demasiado verde",default=5)
-    #dbm_r = fields.Integer(string="Condicion demasiado rojo",default=1)
-    #contador_v = fields.Integer(string="Contador de verde")
-    #contador_r = fields.Integer(string="Contador de rojo")
+   
     estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo", compute='_compute_estado')
     recomendacion = fields.Selection(string="Recomendación", selection=[('ibs','Incrementar buffer size'),('dbs','Reducir buffer_size')])
-    #graficos:
-    #cont
-    #attributes
-    #lt = fields.Integer(string='Tiempo de respuesta del proveedor')
-    #loteOptimo = fields.Integer(string='Lote óptimo')
-    #qty_sitio = fields.Integer(string='# sitio')
-    #qty_transit = fields.Integer(string='# transito')
-    #buffer_size = fields.Integer(string="Buffer Size",default=1)
+    
     oc = fields.Integer(string="# OC", default=0)
     bp_solicitud = fields.Integer(string="%BP en solicitadas",
                                 compute='_compute_bp_solicitud')
@@ -68,30 +56,6 @@ class MtaProducto(models.Model):
                 record.contador_v = 0
                 record.contador_r = 0
     
-    #def write(self,values):
-        #actual_buffer_size = self._origin.buffer_size
-     #   actual_estado = self._origin.estado
-        #print('write mta producto')
-        #if 'buffer_size' in values:
-         #   if(values['buffer_size']!=actual_buffer_size):
-          #      print("sí setee contadores a 0 jiji")
-           #     values['contador_v'] = 0
-           #     values['contador_r'] = 0
-            #    self.env['buffer.time'].create({'product_id':self._origin.id,'buffer_size':values['buffer_size']})
-      #  if 'qty_available' in values:
-         #   if(values['qty_available']>=2*self.buffer_size/3):
-          #      values['estado'] = 1
-           # elif(values['qty_available']>=values['buffer_size']/3):
-            #    values['estado'] = 2
-            #else:
-             #   values['estado'] = 3
-        #if 'estado' in values:
-       #     if(actual_estado != values['estado'] and values['estado']==2):
-         #       values['contador_v'] = 0
-        #        values['contador_r'] = 0
-        #print('ola si entre aki jejeJEJEJEJ')
-        #override_write = super(MtaProducto,self).write(values)
-        #return override_write
         
         
         
