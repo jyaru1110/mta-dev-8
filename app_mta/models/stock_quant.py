@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 class StockQuant(models.Model):
     _inherit = 'stock.quant'
-    
+    #save when qty available is updated
     def write(self,values):
         override_write = super(StockQuant,self).write(values)
         if(self._origin.location_id.id==14):
