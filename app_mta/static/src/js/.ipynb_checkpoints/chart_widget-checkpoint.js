@@ -43,7 +43,7 @@ var ChartWidget = AbstractField.extend({
             data_a.push({x:hoy,y:2*data[data.length-1].buffer_size/3});
             data_r.push({x:hoy,y:data[data.length-1].buffer_size/3});
             data_q.push({x:hoy,y:data[data.length-1].qty_available});
-           
+            console.log('ola')
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
