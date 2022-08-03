@@ -10,6 +10,9 @@ class StockQuant(models.Model):
         override_create = super(StockQuant,self).create(values)
         if(override_create.location_id.id==14):
             producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',override_create.product_id.id)])
+            self.env['changes.time'].create({'product_id':producto_mta.id,'qty_available':producto_mta.qty_available+override_create.inventory_diff_quantity,'buffer_size':producto_mta.buffer_size,'type':'available'})
+
+            
         if(override_create.location_id.id==4):
         #self.env['changes.time'].create({'product_tmpl_id':override_create.id})
             producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',override_create.product_id.id)])
