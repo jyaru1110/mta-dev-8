@@ -20,6 +20,7 @@ class StockQuant(models.Model):
             producto_mta.oc = oc_actual - override_create.inventory_diff_quantity
             self.env['changes.time'].create({'product_id':producto_mta.id,'qty_available':producto_mta.qty_available+override_create.inventory_diff_quantity,'buffer_size':producto_mta.buffer_size,'type':'available'})
             
+        return override_create
         
     
     def write(self,values):
@@ -35,4 +36,7 @@ class StockQuant(models.Model):
             oc_actual = producto_mta.oc
             producto_mta.oc = oc_actual + dif
             self.env['changes.time'].create({'product_id':producto_mta.id,'qty_available':producto_mta.qty_available-dif,'buffer_size':producto_mta.buffer_size,'type':'available'})
+        
+        
+        return override_write
         
