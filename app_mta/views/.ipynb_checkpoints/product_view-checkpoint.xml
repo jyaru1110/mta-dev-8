@@ -26,8 +26,33 @@
             <field name="name">producto.mta.form</field>
             <field name="model">mta.producto</field>
             <field name="arch" type="xml">
-                <form string="TEST">
-                    <field name="id" widget="chart_widget"/>
+                <form>
+                    <sheet>
+                        <field name="id" widget="chart_widget"/>
+                        <notebook>
+                            <page string="MTA configuraciones">
+                                <group>
+                                     <group>
+                                        <field name="be_mta_mon"/>
+                                        <field name="dbm_v"/>
+                                        <field name="dbm_r"/>
+                                    </group>
+                                    <group>
+                                        <field name="loteOptimo"/>
+                                        <field name="lt"/>
+                                        <field name="qty_transit"/>
+                                        <field name="buffer_size"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Estado">
+                                <group>   
+                                    <field class="contenedor_widget" name="alerta" widget="progress_bar_widget"/>
+                                    <field name="recomendacion"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>

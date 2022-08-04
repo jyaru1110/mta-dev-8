@@ -9,10 +9,11 @@
                 <xpath expr="//notebook" position="inside">
                     <page string="MTA configuraciones">
                         <group>
-                            <field name="id" attrs="{'invisible':[('id','!=','False')]}"/>
                             <field name="be_mta_mon"/>
                             <field name="dbm_v"/>
                             <field name="dbm_r"/>
+                        </group>
+                        <group>
                             <field name="loteOptimo"/>
                             <field name="lt"/>
                             <field name="qty_transit"/>

@@ -14,7 +14,7 @@ class MtaProducto(models.Model):
     product_tmpl_id = fields.Many2one('product.product', 'Product Product', required=True, ondelete='cascade')
    
     estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo", compute='_compute_estado')
-    recomendacion = fields.Selection(string="Recomendación", selection=[('ibs','Incrementar buffer size'),('dbs','Reducir buffer_size')])
+    recomendacion = fields.Selection(string="Recomendación",default="Sin recomendación", selection=[('ibs','Incrementar buffer size'),('dbs','Reducir buffer_size')])
     
     oc = fields.Integer(string="# OC", default=0)
     bp_solicitud = fields.Integer(string="%BP en solicitadas",

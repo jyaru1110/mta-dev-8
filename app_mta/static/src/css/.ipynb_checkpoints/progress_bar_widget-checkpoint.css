@@ -9,7 +9,7 @@
 .contenedor{
     padding:inherit;
 }
-.o_progress_bar_widget_cell{
+.o_progress_bar_widget_cell , .contenedor_widget{
     position:relative!important;
 }
 .canvas{
