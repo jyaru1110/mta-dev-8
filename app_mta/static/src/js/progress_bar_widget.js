@@ -16,7 +16,14 @@ var ProgressBarWidget = AbstractField.extend({
         if(value!='DV' && value!='DR' && value!="N/A"){
             this.$('.background').text(value + "%");
         }else{
-            this.$('.background').text(value);
+            if(value=='DV'){
+                this.$('.background').text('Demasiado verde');
+            }else if(value=='DR'){
+                this.$('.background').text('Demasiado rojo');
+            }else if(value=='N/A'){
+                this.$('.background').text('Sin alerta');
+            }
+            
             //this.$('.background').css('padding','50% 100%');
             bandera_alerta = true;
         }

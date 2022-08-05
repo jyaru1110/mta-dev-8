@@ -14,7 +14,7 @@ class MtaProducto(models.Model):
     product_tmpl_id = fields.Many2one('product.product', 'Product Product', required=True, ondelete='cascade')
    
     estado = fields.Integer(string="1. Verde 2. Amarillo 3. Rojo", compute='_compute_estado')
-    recomendacion = fields.Selection(string="Recomendación",default="Sin recomendación", selection=[('ibs','Incrementar buffer size'),('dbs','Reducir buffer_size')])
+    recomendacion = fields.Selection(string="Recomendación",default="nr", selection=[('ibs','Incrementar buffer size'),('dbs','Reducir buffer_size'),('nr','Buffer no requiere ser ajustado')])
     
     oc = fields.Integer(string="# OC", default=0)
     bp_solicitud = fields.Integer(string="%BP en solicitadas",
@@ -23,7 +23,7 @@ class MtaProducto(models.Model):
                                , compute='_compute_bp_transito')
     bp_sitio = fields.Integer(string="%BP en sitio",
                                compute='_compute_bp_sitio')
-    alerta = fields.Selection(string="Alerta",selection=[('DV','DV'),('DR','DR'),('N/A','N/A')], default="N/A")
+    alerta = fields.Selection(string="Status del buffer",selection=[('DV','DV'),('DR','DR'),('N/A','N/A')], default="N/A")
     
     @api.model
     def create(self,values):
