@@ -30,12 +30,14 @@ class ProductProduct(models.Model):
                 values['contador_v'] = 0
                 values['contador_r'] = 0
                 producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
-                self.env['changes.time'].create({'product_id':producto_mta.id,'buffer_size':values['buffer_size'],'qty_available':actual_qty_available,'type':'buffer'})
+                if producto_mta:
+                    self.env['changes.time'].create({'product_id':producto_mta.id,'buffer_size':values['buffer_size'],'qty_available':actual_qty_available,'type':'buffer'})
         if 'qty_available' in values:
             if values['qty_available']!=actual_qty_available:
                 print('sí entro a crear changes in time')
                 producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
-                self.env['changes.time'].create({'product_id':producto_mta.id,'qty_available':values['qty_available'],'buffer_size':actual_buffer_size,'type':'available'})
+                if producto_mta:
+                    self.env['changes.time'].create({'product_id':producto_mta.id,'qty_available':values['qty_available'],'buffer_size':actual_buffer_size,'type':'available'})
     
         override_write = super(ProductProduct,self).write(values)
 
