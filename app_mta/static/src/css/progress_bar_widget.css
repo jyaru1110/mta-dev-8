@@ -18,7 +18,14 @@
 }
 
 .contenedor-recomendacion{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: flex!important;
+    flex-direction: row!important;
+    justify-content: space-between!important;
+}
+
+.button-confirmar{
+    color:white;
+    background-color:#3E8DE9;
+    border:none;
+    border-radius: 5px;
 }

@@ -47,8 +47,10 @@
                             </page>
                             <page string="Estado">
                                 <group>   
-                                    <field class="contenedor_widget" name="alerta" widget="progress_bar_widget"/>
-                                    <field name="recomendacion" widget="recomendacion_widget"/>
+                                    <group>
+                                        <field class="contenedor_widget" name="alerta" widget="progress_bar_widget"/>
+                                        <field name="recomendacion" widget="recomendacion_widget"/>
+                                    </group>
                                 </group>
                             </page>
                         </notebook>

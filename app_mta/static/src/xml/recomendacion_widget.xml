@@ -2,7 +2,7 @@
     <t t-name="RecomendacionWidget">
         <div class="contenedor-recomendacion">
             <span class="label-recomendacion"></span>
-            <button class="button-confirmar"/>
+            <button class="button-confirmar">Confirmar</button>
         </div>
     </t>
 </templates>

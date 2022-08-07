@@ -18,9 +18,9 @@ var ChartWidget = AbstractField.extend({
         var data_a =[];
         var data_r = [];
         var data_q = [];
-        
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
+        localStorage.product_id = value;
         var enlace = "/get_buffer_changes/"+value.toString();
         ajax.jsonRpc(enlace, 'call', {}, {
             'async': false
@@ -43,6 +43,7 @@ var ChartWidget = AbstractField.extend({
             data_a.push({x:hoy,y:2*data[data.length-1].buffer_size/3});
             data_r.push({x:hoy,y:data[data.length-1].buffer_size/3});
             data_q.push({x:hoy,y:data[data.length-1].qty_available});
+            localStorage.buffer_size = data[data.length-1].buffer_size;
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -81,6 +82,7 @@ var ChartWidget = AbstractField.extend({
                         ]
                     },
                     options: {
+                        responsive:true,
                         scales: {
                             y: {
                                 beginAtZero: true,
