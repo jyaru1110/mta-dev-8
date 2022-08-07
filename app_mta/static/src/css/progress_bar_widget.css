@@ -16,3 +16,9 @@
     height:500px!important;
     width:1000px!important;
 }
+
+.contenedor-recomendacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

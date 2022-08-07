@@ -1,0 +1,8 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="RecomendacionWidget">
+        <div class="contenedor-recomendacion">
+            <span class="label-recomendacion"></span>
+            <button class="button-confirmar"/>
+        </div>
+    </t>
+</templates>

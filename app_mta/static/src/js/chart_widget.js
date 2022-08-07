@@ -115,9 +115,6 @@ var ChartWidget = AbstractField.extend({
                     }
             });
         });
-        //console.log(labels)
-        //console.log(data_c)
-        
         
     },
 })
