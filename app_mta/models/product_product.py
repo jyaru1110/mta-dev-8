@@ -12,6 +12,8 @@ class ProductProduct(models.Model):
     buffer_size = fields.Integer(string="Buffer Size",default=1)
     contador_v = fields.Integer(string="Contador de verde")
     contador_r = fields.Integer(string="Contador de rojo")
+    recomendacion = fields.Selection(string="Recomendación",default="nr", selection=[('ibs','Incrementar buffer size'),('dbs','Reducir buffer_size'),('nr','Buffer no requiere ser ajustado')])
+    alerta = fields.Selection(string="Status del buffer",selection=[('DV','DV'),('DR','DR'),('N/A','N/A')], default="N/A")
     
     @api.model
     def create(self,values):
@@ -29,6 +31,8 @@ class ProductProduct(models.Model):
                 print("sí setee contadores a 0 jiji")
                 values['contador_v'] = 0
                 values['contador_r'] = 0
+                values['alerta'] = 'N/A'
+                values['recomendacion'] = 'nr'
                 producto_mta = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.id)])
                 if producto_mta:
                     self.env['changes.time'].create({'product_id':producto_mta.id,'buffer_size':values['buffer_size'],'qty_available':actual_qty_available,'type':'buffer'})

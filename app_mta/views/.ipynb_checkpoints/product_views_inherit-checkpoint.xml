@@ -9,6 +9,7 @@
                 <xpath expr="//notebook" position="inside">
                     <page string="MTA configuraciones">
                         <group>
+                        <group>
                             <field name="be_mta_mon"/>
                             <field name="dbm_v"/>
                             <field name="dbm_r"/>
@@ -18,6 +19,7 @@
                             <field name="lt"/>
                             <field name="qty_transit"/>
                             <field name="buffer_size"/>
+                        </group>
                         </group>
                     </page>
                 </xpath>
