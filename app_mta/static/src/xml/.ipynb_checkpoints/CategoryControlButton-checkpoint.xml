@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="CategoryControlButton'" owl="1">
+      <div class="control-button o_sale_orders_button">
+         <i class="fa fa-list" />View Categories
+      </div>
+   </t>
+</templates>

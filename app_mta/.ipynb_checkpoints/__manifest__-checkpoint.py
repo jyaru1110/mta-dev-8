@@ -17,19 +17,25 @@
             'schedule/schedule.xml'
     ],
     'assets': {
+        
+        'point_of_sale.assets':[
+            '/app_mta/static/src/js/CategoryControlButton.js',
+            '/app_mta/static/src/js/CategoryScreen.js',
+        ],
         'web.assets_backend': [
             ('prepend','/app_mta/static/src/css/progress_bar_widget.css'),
             '/app_mta/static/src/js/progress_bar_widget.js',
             '/app_mta/static/src/js/chart_widget.js',
             '/app_mta/static/src/js/recomendacion_widget.js',
             'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js',
-            #"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js",
             "https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"
         ],
         'web.assets_qweb': [
             '/app_mta/static/src/xml/progress_bar_widget.xml',
             '/app_mta/static/src/xml/chart_widget.xml',
-            '/app_mta/static/src/xml/recomendacion_widget.xml'
+            '/app_mta/static/src/xml/recomendacion_widget.xml',
+            '/app_mta/static/src/xml/CategoryControlButton.xml',
+            '/app_mta/static/src/xml/CategoryScreen.xml'
         ],
     },
     

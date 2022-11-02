@@ -17,6 +17,11 @@
             'schedule/schedule.xml'
     ],
     'assets': {
+        
+        'point_of_sale.assets':[
+            '/app_mta/static/src/js/CategoryControlButton.js',
+            '/app_mta/static/src/js/CategoryScreen.js',
+        ],
         'web.assets_backend': [
             ('prepend','/app_mta/static/src/css/progress_bar_widget.css'),
             '/app_mta/static/src/js/progress_bar_widget.js',
@@ -28,7 +33,9 @@
         'web.assets_qweb': [
             '/app_mta/static/src/xml/progress_bar_widget.xml',
             '/app_mta/static/src/xml/chart_widget.xml',
-            '/app_mta/static/src/xml/recomendacion_widget.xml'
+            '/app_mta/static/src/xml/recomendacion_widget.xml',
+            '/app_mta/static/src/xml/CategoryControlButton.xml',
+            '/app_mta/static/src/xml/CategoryScreen.xml'
         ],
     },
     
