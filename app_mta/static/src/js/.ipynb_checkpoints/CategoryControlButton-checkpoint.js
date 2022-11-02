@@ -12,7 +12,7 @@ odoo.define('pos_custom_screen.CategoryControlButton', function (require) {
         condition: function () {
             return true;
         },
-        position: ['before', 'SetPricelistButton'],
+        position: ['inside', 'SetPricelistButton'],
     });
     Registries.Component.add(CategoryControlButton);
     return CategoryControlButton;

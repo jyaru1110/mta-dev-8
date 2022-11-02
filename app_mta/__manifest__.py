@@ -8,7 +8,7 @@
     'author' : 'odoo',
     'category' : 'Training',
     'version' : '0.1',
-    'depends' : ['sale','stock'],
+    'depends' : ['sale','stock','point_of_sale'],
     'data':['security/mta_security.xml',
             'security/ir.model.access.csv',
             'views/mta_app_view.xml',
