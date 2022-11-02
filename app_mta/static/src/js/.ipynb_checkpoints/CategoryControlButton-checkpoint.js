@@ -16,7 +16,6 @@ odoo.define('app_mta.CategoryControlButton', function (require) {
     }
     
     CategoryControlButton.template = 'CategoryControlButton';
-    console.log("cola4");
     ProductScreen.addControlButton({
         component: CategoryControlButton,
         condition: function () {

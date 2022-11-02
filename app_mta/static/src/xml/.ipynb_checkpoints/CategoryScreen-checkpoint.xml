@@ -10,8 +10,11 @@
             <div class="button api" t-on-click="api">
                        call api
             </div>
-              
         </div>
+           <div class="full-content">
+                  <div id="id-api">id</div>
+                  <div id="Monto">monto</div>
+                </div>
       </div>
    </t>
 </templates>
