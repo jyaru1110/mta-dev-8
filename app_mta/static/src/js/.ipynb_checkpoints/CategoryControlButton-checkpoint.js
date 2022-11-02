@@ -5,13 +5,6 @@ odoo.define('pos_custom_screen.CategoryControlButton', function (require) {
     const Registries = require('point_of_sale.Registries');
     const { useListener } = require('web.custom_hooks');
     class CategoryControlButton extends PosComponent {
-        constructor() {
-           super(...arguments);
-           useListener('click', this._onClick);
-       }
-       _onClick() {
-           this.showTempScreen('CategoryScreen');
-       }
     }
     CategoryControlButton.template = 'pos_custom_screen.CategoryControlButton';
     ProductScreen.addControlButton({
