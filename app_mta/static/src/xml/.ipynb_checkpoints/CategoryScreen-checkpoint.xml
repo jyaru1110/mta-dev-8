@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="CategoryScreen" owl="1">
+      <div class="screen content">
+          
+          <div class="top-content">
+            <div class="button back" t-on-click="back">
+                       Back
+            </div>
+            <div class="button api" t-on-click="api">
+                       call api
+            </div>
+              
+        </div>
+      </div>
+   </t>
+</templates>

@@ -17,9 +17,16 @@
             'schedule/schedule.xml'
     ],
     'assets': {
-        
+        'web.assets_qweb': [
+            '/app_mta/static/src/xml/progress_bar_widget.xml',
+            '/app_mta/static/src/xml/chart_widget.xml',
+            '/app_mta/static/src/xml/recomendacion_widget.xml',
+            '/app_mta/static/src/xml/CategoryControlButton.xml',
+            '/app_mta/static/src/xml/CategoryScreen.xml',
+        ],
         'point_of_sale.assets':[
             '/app_mta/static/src/js/CategoryControlButton.js',
+            '/app_mta/static/src/js/CategoryScreen.js'
         ],
         'web.assets_backend': [
             ('prepend','/app_mta/static/src/css/progress_bar_widget.css'),
@@ -29,12 +36,7 @@
             'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js',
             "https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"
         ],
-        'web.assets_qweb': [
-            '/app_mta/static/src/xml/progress_bar_widget.xml',
-            '/app_mta/static/src/xml/chart_widget.xml',
-            '/app_mta/static/src/xml/recomendacion_widget.xml',
-            '/app_mta/static/src/xml/CategoryControlButton.xml',
-        ],
+        
     },
     
     'demo' : [
