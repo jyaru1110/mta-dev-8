@@ -20,6 +20,7 @@ var ChartWidget = AbstractField.extend({
         var data_q = [];
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
+        console.log("value");
         localStorage.product_id = value;
         var enlace = "/get_buffer_changes/"+value.toString();
         ajax.jsonRpc(enlace, 'call', {}, {
