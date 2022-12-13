@@ -10,7 +10,6 @@ odoo.define('app_mta.CategoryScreen', function(require) {
               method: 'GET', // or 'PUT'
             }).then((response) => response.json()).then((data) => {
               //console.log('Success:', data);
-            console.log("hola",data.id);
              
                                                                   
             }).catch((error) => {console.error('Error:', error);});
