@@ -19,5 +19,8 @@ class StockMove(models.Model):
         if self._origin.state=="done":
             producto = self.env['mta.producto'].search([('product_tmpl_id','=',self._origin.product_id.id)])
             oc_actual = producto.oc
-            producto.oc = oc_actual - self._origin.product_uom_qty
+            if oc_actual - self._origin.product_uom_qty < 0:
+                producto.oc = 0
+            else:
+                producto.oc = oc_actual - self._origin.product_uom_qty
         return override_write
