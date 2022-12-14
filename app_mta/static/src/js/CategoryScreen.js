@@ -9,8 +9,6 @@ odoo.define('app_mta.CategoryScreen', function(require) {
           fetch('https://api-dev-dot-mada-dev.ue.r.appspot.com/api/creditosAfiliado/consultarPorFolio/?folio=A-00001-0011-NOP&afiliadoId=2&access_token=hJUjJT6bllOsfmdHwgxYWMC8r7X4BHDzBf4CXPWmDni0VPkD308WidX71MjEv27V', {
               method: 'GET', // or 'PUT'
             }).then((response) => response.json()).then((data) => {
-              //console.log('Success:', data);
-             
                                                                   
             }).catch((error) => {console.error('Error:', error);});
       }

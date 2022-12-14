@@ -23,31 +23,9 @@ var ProgressBarWidget = AbstractField.extend({
             }else if(value=='N/A'){
                 this.$('.background').text('Sin alerta');
             }
-            
-            //this.$('.background').css('padding','50% 100%');
             bandera_alerta = true;
         }
         
-        /*var value = this.value.toString();
-        if(value.length == 4){
-            this.$('.background').css('padding','10% 33%');
-        }else{
-            if(value.length == 5){
-                this.$('.background').css('padding','10% 30%');
-            }else{
-                if(value.length==3){
-                    this.$('.background').css('padding','10% 34.6%');
-                }else{
-                    if(value.length==2 && !bandera_alerta){
-                        this.$('.background').css('padding','10% 38%');
-                    }else{
-                        if(value.length==6){
-                            this.$('.background').css('padding','10% 27%');
-                        }
-                    }
-                }
-            }
-        }*/
         if(value<=33 || value=='DV'){
             this.$('.background').css('background-color','#35C855');
             
