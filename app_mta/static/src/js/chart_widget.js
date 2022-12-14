@@ -20,7 +20,6 @@ var ChartWidget = AbstractField.extend({
         var data_q = [];
         var canvas = this.$('.canvas')[0]
         var ctx = canvas.getContext("2d");
-        console.log("value");
         localStorage.product_id = value;
         var enlace = "/get_buffer_changes/"+value.toString();
         ajax.jsonRpc(enlace, 'call', {}, {
@@ -46,13 +45,18 @@ var ChartWidget = AbstractField.extend({
             data_q.push({x:hoy,y:data[data.length-1].qty_available});
             localStorage.buffer_size = data[data.length-1].buffer_size;
             
+            console.log("V",data_v);
+            console.log("A",data_a);
+            console.log("R",data_r);
+            console.log("Q",data_q);
+            
+            
             const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
                         //labels: labels,
                         datasets:[
                         {
-                            //fill:true,
                             stepped: true,
                             label:'Quantity On Hand',
                             data:data_q,

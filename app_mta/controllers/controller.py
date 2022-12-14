@@ -7,7 +7,7 @@ import datetime
 from dateutil import tz
 
 from_zone = tz.gettz('UTC')
-to_zone = tz.gettz('UTC-5')
+to_zone = tz.gettz('UTC-6')
 
 class Controller(http.Controller):
     @http.route(['/get_buffer_changes/<int:product_id>'],type='json',auth='public',website=True)
